@@ -54,5 +54,8 @@ in
           fzf-vim
         ];
     };
+
+    home.file.".config/nvim/coc-settings.json".text = builtins.readFile ./files/coc-settings.json;
   };
+
 }

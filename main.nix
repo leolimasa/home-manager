@@ -6,19 +6,9 @@ in
 
 { 
   imports = [
-    ./neovim_python.nix
-    ./neovim.nix
   ];
 
   config = {
-
-    # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
-
-    # Home Manager needs a bit of information about you and the
-    # paths it should manage.
-    home.username = "leo";
-    home.homeDirectory = "/home/leo";
 
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
