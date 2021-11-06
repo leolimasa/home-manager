@@ -1,0 +1,7 @@
+{
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyArgs": [
+    "--strict",
+    "--ignore-missing-imports"
+  ]
+}
