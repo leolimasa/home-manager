@@ -23,7 +23,12 @@ in
         jupyter-vim
       ];
 
-      # TODO add coc json settings
+      withPython3 = true;
+
+      extraPython3Packages = (ps: with ps; [
+        jupyter
+        pynvim
+      ]);
     };
   };
 }

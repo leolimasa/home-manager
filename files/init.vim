@@ -11,6 +11,7 @@ set shiftwidth=2   " Default to 2 spaces for indentation
 set mouse=a        " Enable mouse support for everything
 let g:vim_markdown_folding_disabled = 1  " Disable markdown folding because of bug
 let g:airline_theme='onedark'
+set noswapfile
 
 " Fix the vertical split
 highlight VertSplit cterm=NONE
