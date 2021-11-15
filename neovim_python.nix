@@ -26,7 +26,7 @@ in
       withPython3 = true;
 
       extraPython3Packages = (ps: with ps; [
-        jupyter
+        jupyter-client
         pynvim
       ]);
     };

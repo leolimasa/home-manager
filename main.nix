@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  unstable = import <unstable> {};
-in
-
 { 
   imports = [
   ];
@@ -21,19 +17,14 @@ in
     home.stateVersion = "21.11";
 
     # Enable zsh
-    programs.zsh = {
-      enable = true;
-      shellAliases = {
-        # Add any aliases here
-      };
-    };
+   # programs.zsh = {
+   #   enable = true;
+   #   shellAliases = {
+   #     # Add any aliases here
+   #   };
+   # };
 
     home.packages = with pkgs; [
-      unstable.libsForQt5.discover
-      unstable.discord
-      spotify
-      thunderbird
-      dropbox
     ];
   };
 }
