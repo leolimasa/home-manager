@@ -22,6 +22,7 @@ in
 
   config = {
     home.packages = with pkgs; [
+      xclip
       nodejs
       fzf
     ];

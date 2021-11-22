@@ -3,14 +3,12 @@
   imports = [ ];
 
   config = {
-    environment.systemPackages = with pkgs; [
-      nodejs
-      fzf
+    home.packages = with pkgs; [
     ];
 
     programs.tmux = {
       enable = true;
-      extraConfig = builtins.readFile ../files/tmux.conf; 
+      extraConfig = builtins.readFile ./files/tmux.conf; 
     };
   };
 }
