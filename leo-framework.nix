@@ -5,6 +5,7 @@
     ./neovim.nix
     ./neovim_python.nix
     ./tmux.nix
+    ./zsh.nix
   ];
 
 }
