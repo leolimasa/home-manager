@@ -3,7 +3,7 @@
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wifi."
 
-# Downgrade kernel because i915 driver is f*cked on newer ones
+# Downgrade kernel because i915 driver and bluetooth is f*cked on newer ones
 # pacman --needed -U https://archive.archlinux.org/^Cckages/l/linux/linux-5.14.9.arch2-1-x86_64.pkg.tar.zst
 pacman --needed -U https://archive.archlinux.org/packages/l/linux/linux-5.12.15.arch1-1-x86_64.pkg.tar.zst
 
@@ -38,7 +38,8 @@ pacman --needed -S /
 	bluez-utils /
 	pulseaudio-bluetooth /
 	system-config-printer /
-	nss-mdns
+	nss-mdns /
+	ethtool
 
 systemctl enable cups
 systemctl enable bluetooth
@@ -49,3 +50,4 @@ cp $SCRIPT_DIR/nsswitch.conf /etc/nsswitch.conf
 
 source $SCRIPT_DIR/firewall.sh
 source $SCRIPT_DIR/grub.sh
+source $SCRIPT_DIR/initramfs.sh
