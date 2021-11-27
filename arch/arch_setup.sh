@@ -51,3 +51,4 @@ cp $SCRIPT_DIR/nsswitch.conf /etc/nsswitch.conf
 source $SCRIPT_DIR/firewall.sh
 source $SCRIPT_DIR/grub.sh
 source $SCRIPT_DIR/initramfs.sh
+source $SCRIPT_DIR/suspend.sh
