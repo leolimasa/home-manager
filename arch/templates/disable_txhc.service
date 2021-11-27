@@ -1,0 +1,10 @@
+[Unit]
+Description=Disables TXHC ACPI wakeup so that the system sleeps properly
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /usr/bin/disable_txhc
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

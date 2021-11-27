@@ -1,0 +1,8 @@
+#!/bin/bash
+txhc_enabled=$(cat /proc/acpi/wakeup | grep enabled | grep TXHC)
+
+if [ ! -z "$txhc_enabled" ]; then 
+	echo "Disabling TXHC in /proc/acpi/wakeup"
+	echo TXHC > /proc/acpi/wakeup
+	cat /proc/acpi/wakeup | grep TXHC
+fi
