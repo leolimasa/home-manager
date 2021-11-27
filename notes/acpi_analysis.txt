@@ -1,0 +1,36 @@
+ENABLED BY DEFAULT
+
+PEG0      S4    *enabled   pci:0000:00:06.0     00:06.0 PCI bridge: Intel Corporation 11th Gen Core Processor PCIe Controller (rev 01)
+XHCI      S4    *enabled   pci:0000:00:14.0     00:14.0 USB controller: Intel Corporation Tiger Lake-LP USB 3.2 Gen 2x1 xHCI Host Controller (rev 20)
+RP10      S4    *enabled   pci:0000:00:1d.0     00:1d.0 PCI bridge: Intel Corporation Device a0b1 (rev 20)
+TXHC      S4    *enabled   pci:0000:00:0d.0     00:0d.0 USB controller: Intel Corporation Tiger Lake-LP Thunderbolt 4 USB Controller (rev 01)
+TDM0      S4    *enabled   pci:0000:00:0d.2     00:0d.2 USB controller: Intel Corporation Tiger Lake-LP Thunderbolt 4 NHI #0 (rev 01)
+TDM1      S4    *enabled   pci:0000:00:0d.3     00:0d.3 USB controller: Intel Corporation Tiger Lake-LP Thunderbolt 4 NHI #1 (rev 01)
+TRP0      S4    *enabled   pci:0000:00:07.0     00:07.0 PCI bridge: Intel Corporation Tiger Lake-LP Thunderbolt 4 PCI Express Root Port #0 (rev 01)
+TRP1      S4    *enabled   pci:0000:00:07.1     00:07.1 PCI bridge: Intel Corporation Tiger Lake-LP Thunderbolt 4 PCI Express Root Port #1 (rev 01)
+TRP2      S4    *enabled   pci:0000:00:07.2     00:07.2 PCI bridge: Intel Corporation Tiger Lake-LP Thunderbolt 4 PCI Express Root Port #2 (rev 01)
+TRP3      S4    *enabled   pci:0000:00:07.3     00:07.3 PCI bridge: Intel Corporation Tiger Lake-LP Thunderbolt 4 PCI Express Root Port #3 (rev 01)
+
+DISABLED
+
+1) WORKED
+
+PEG0      S4    *enabled   pci:0000:00:06.0     00:06.0 PCI bridge: Intel Corporation 11th Gen Core Processor PCIe Controller (rev 01)
+XHCI      S4    *enabled   pci:0000:00:14.0     00:14.0 USB controller: Intel Corporation Tiger Lake-LP USB 3.2 Gen 2x1 xHCI Host Controller (rev 20)
+RP10      S4    *enabled   pci:0000:00:1d.0     00:1d.0 PCI bridge: Intel Corporation Device a0b1 (rev 20)
+TXHC      S4    *enabled   pci:0000:00:0d.0     00:0d.0 USB controller: Intel Corporation Tiger Lake-LP Thunderbolt 4 USB Controller (rev 01)
+TDM0      S4    *enabled   pci:0000:00:0d.2     00:0d.2 USB controller: Intel Corporation Tiger Lake-LP Thunderbolt 4 NHI #0 (rev 01)
+
+
+2) DID NOT WORK
+
+PEG0      S4    *enabled   pci:0000:00:06.0     00:06.0 PCI bridge: Intel Corporation 11th Gen Core Processor PCIe Controller (rev 01)
+XHCI      S4    *enabled   pci:0000:00:14.0     00:14.0 USB controller: Intel Corporation Tiger Lake-LP USB 3.2 Gen 2x1 xHCI Host Controller (rev 20)
+
+3) WORKED
+
+RP10      S4    *enabled   pci:0000:00:1d.0     00:1d.0 PCI bridge: Intel Corporation Device a0b1 (rev 20)
+TXHC      S4    *enabled   pci:0000:00:0d.0     00:0d.0 USB controller: Intel Corporation Tiger Lake-LP Thunderbolt 4 USB Controller (rev 01)
+TDM0      S4    *enabled   pci:0000:00:0d.2     00:0d.2 USB controller: Intel Corporation Tiger Lake-LP Thunderbolt 4 NHI #0 (rev 01)
+
+IT'S TXHC
