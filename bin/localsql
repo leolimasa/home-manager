@@ -1,0 +1,4 @@
+#!/bin/bash
+input=$(cat - )
+echo -e "$input"
+psql -f <(echo -e "$input")

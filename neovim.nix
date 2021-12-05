@@ -53,6 +53,7 @@ in
           coc-tsserver
           coc-python
           fzf-vim
+          vimspector
         ];
     };
 

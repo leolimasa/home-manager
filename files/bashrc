@@ -1,5 +1,6 @@
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 export NIX_PATH=$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels
+export PATH=$PATH:/home/leo/Code/personal/home-manager/bin
 setxkbmap -option caps:escape
 alias ls="ls --color=auto"
 eval "$(dircolors)"

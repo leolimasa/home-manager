@@ -39,7 +39,9 @@ pacman --needed -S /
 	pulseaudio-bluetooth /
 	system-config-printer /
 	nss-mdns /
-	ethtool
+	ethtool /
+	net-tools /
+	bind-tools
 
 systemctl enable cups
 systemctl enable bluetooth
