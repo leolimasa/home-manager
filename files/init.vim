@@ -1,4 +1,21 @@
 " --------------------
+"  Plugins that do not work well when started with nix
+" --------------------
+
+" Automatically install vim plug if not already installed
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin(stdpath('data') . '/plugged')
+
+Plug 'puremourning/vimspector'
+
+call plug#end()
+
+" --------------------
 "  Basic Config
 " --------------------
 
@@ -141,3 +158,12 @@ nnoremap <silent> <space>P :FZF ~<cr>
 nnoremap <silent> <space>b :Buffers<cr>
 " Find text in current buffer'
 nmap <space>/ :<C-u>BLines<cr>
+
+" ---------------
+" Vimspector
+" ---------------
+let g:vimspector_enable_mappings = 'HUMAN'
+
+nnoremap <silent> <space>di :call vimspector#StepInto()<CR>
+nnoremap <silent> <space>dout :call vimspector#StepOut()<CR>
+nnoremap <silent> <space>db :call vimspector#ToggleBreakpoint()<CR>
