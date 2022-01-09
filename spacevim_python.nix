@@ -19,7 +19,6 @@ in
   config = {
     programs.neovim = {
       plugins = with pkgs.vimPlugins; [
-        coc-python
         jupyter-vim
       ];
 

@@ -41,7 +41,8 @@ pacman --needed -S /
 	nss-mdns /
 	ethtool /
 	net-tools /
-	bind-tools
+	bind-tools /
+	the_silver_searcher
 
 systemctl enable cups
 systemctl enable bluetooth
