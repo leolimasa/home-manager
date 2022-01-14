@@ -44,7 +44,7 @@ in
           onedark-vim
           #tender-vim
           #vim-deus
-          #vim-one
+          vim-one
           fugitive	
           coc-nvim
           coc-json
@@ -56,6 +56,8 @@ in
           vim-go
           vimwiki
           # vimspector
+          auto-pairs
+          palenight-vim
         ];
     };
 
