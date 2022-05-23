@@ -16,10 +16,10 @@ passwd leo
 systemctl enable NetworkManager
 
 # Xorg
-#pacman -S xorg
+pacman -S xorg
 
 # Wayland
-pacman --needed -S xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
+#pacman --needed -S xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
 
 # KDE
 pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
@@ -44,6 +44,10 @@ pacman --needed -S /
 	bind-tools /
 	the_silver_searcher
 
+# Flatpak repos
+flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
+
+# Enable services
 systemctl enable cups
 systemctl enable bluetooth
 systemctl enable avahi-daemon # for printing

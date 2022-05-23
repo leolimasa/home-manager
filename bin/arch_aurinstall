@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -e
+set -x
+mkdir -p ~/AUR
+cd ~/AUR
+if [ -d "$PWD/$1" ]; then
+  cd ~/AUR/$1
+  git pull
+  rm -f *.zst
+else
+  git clone https://aur.archlinux.org/$1.git
+  cd ~/AUR/$1
+fi
+makepkg --syncdeps
+sudo pacman -U *.zst

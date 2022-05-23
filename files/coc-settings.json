@@ -3,5 +3,7 @@
   "python.linting.mypyArgs": [
     "--strict",
     "--ignore-missing-imports"
-  ]
+  ],
+  "rust-analyzer.cargo.loadOutDirsFromCheck": true,
+  "rust-analyzer.procMacro.enable": true
 }

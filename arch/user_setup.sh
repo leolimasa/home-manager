@@ -18,3 +18,12 @@ nix-channel --update
 echo "export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH" >> ~/.bashrc
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 nix-shell '<home-manager>' -A install
+
+# Chrome
+mkdir -p /home/leo/AUR
+cd /home/leo/AUR
+git clone https://aur.archlinux.org/google-chrome.git
+cd google-chrome
+makepkg
+sudo pacman -U *.zst
+

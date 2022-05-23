@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+# Main system update
+sudo pacman -Sy archlinux-keyring
+sudo pacman -Syu
+
+# User level packages update
+nix-channel --update
+home-manager switch
+nix-collect-garbage
+flatpak update
+

@@ -52,6 +52,7 @@ in
           coc-yaml
           coc-tsserver
           coc-python
+          coc-rust-analyzer
           fzf-vim
           vim-go
           vimwiki

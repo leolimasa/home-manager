@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -e
+base_repo=$1
+base_branch=$2
+changes_repo=$3
+changes_branch=$4
+
+# git clone "$base_repo" base
+# cd base
+# git checkout $base_branch
+
+# cd ..
+# git clone "$changes_repo" changes
+# cd changes
+# git checkout $changes_branch
+
+
+diff -qr base changes | grep differ$ | sed -r 's/^Files (.+) and (.+) differ/nvim -d \1 \2/' > commands
+diff -qr base changes | grep "^Only" | sed -r 's/^Only in (.+): (.+)$/nvim \1\/\2/' >> commands
