@@ -26,6 +26,7 @@
 
     home.packages = with pkgs; [
       jetbrains-mono
+      ranger
     ];
 
     fonts.fontconfig.enable = true;

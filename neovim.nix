@@ -40,6 +40,9 @@ in
           vim-sleuth
           vim-nix
           vim-airline
+          vim-dadbod
+          vim-dadbod-ui
+          vim-dadbod-completion
           #vim-breezy-theme
           onedark-vim
           #tender-vim

@@ -1,12 +1,42 @@
+# ------------------------
+# Setup Nix / home-manager
+# ------------------------
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 export NIX_PATH=$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels
 export PATH=$PATH:/home/leo/Code/personal/home-manager/bin
-setxkbmap -option caps:escape
+
+
+# ------------------------
+# Correct terminal colors
+# ------------------------
 alias ls="ls --color=auto"
 eval "$(dircolors)"
 export LS_COLORS
 
+
+# ------------------------
+# FZF history autocomplete
+# ------------------------
 if command -v fzf-share >/dev/null; then
   source "$(fzf-share)/key-bindings.bash"
   source "$(fzf-share)/completion.bash"
 fi
+
+
+# ----------------------------------------------------
+# ranger_cd: run ranger and change directories on quit
+# ----------------------------------------------------
+ranger_cd() {
+    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
+    ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
+        cd -- "$chosen_dir"
+    fi
+    rm -f -- "$temp_file"
+}
+
+
+# ------------------------
+# Maps caps lock to escape
+# ------------------------
+setxkbmap -option caps:escape

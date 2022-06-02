@@ -42,7 +42,8 @@ pacman --needed -S /
 	ethtool /
 	net-tools /
 	bind-tools /
-	the_silver_searcher
+	the_silver_searcher /
+	kitty
 
 # Flatpak repos
 flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
