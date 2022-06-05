@@ -27,6 +27,7 @@
     home.packages = with pkgs; [
       jetbrains-mono
       ranger
+      ripgrep
     ];
 
     fonts.fontconfig.enable = true;

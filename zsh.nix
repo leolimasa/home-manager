@@ -21,12 +21,13 @@
       initExtra =
       ''
       eval $(persist load)
-      ''
+      source "$(fzf-share)/key-bindings.zsh"
+      source "$(fzf-share)/completion.zsh"
+      '';
       oh-my-zsh = {
         enable = true;
-        plugins = [];
+        plugins = ["dirhistory"];
         theme = "amuse";
-        #theme = "candy";
       };
     };
   };
