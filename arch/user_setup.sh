@@ -27,3 +27,9 @@ nix-shell '<home-manager>' -A install
 # makepkg
 # sudo pacman -U *.zst
 
+echo "!!! IMPORTANT !!!"
+echo "Edit ~/.config/nixpkgs/home.nix, add programs.home-manager.enable = true and add an import to this machine's configuration in the git repo."
+echo "Ex.:"
+echo "  imports = ["
+echo "    ~/path/to/git/this-machine.nix"
+echo "  ];"

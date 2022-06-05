@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -e
+configfile="$HOME/.config/persist.vars"
+
+if [ "$1" == "load" ]; then
+  cat "$configfile"
+  exit
+fi
+
+if [ "$1" == "add" ]; then
+  varname="$2"
+  value="$3"
+  echo "export $varname=\"$value\"" >> "$configfile"
+  cat "$configfile"
+  exit
+fi
+
+if [ "$1" == "edit" ]; then
+  nvim "$configfile"
+  exit
+fi
+

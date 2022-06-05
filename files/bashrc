@@ -3,7 +3,7 @@
 # ------------------------
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 export NIX_PATH=$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels
-export PATH=$PATH:/home/leo/Code/personal/home-manager/bin
+export PATH=$PATH:$HOME/Code/personal/home-manager/bin
 
 
 # ------------------------
@@ -35,6 +35,10 @@ ranger_cd() {
     rm -f -- "$temp_file"
 }
 
+# ----------------------------------------------------
+# Load persisted env vars
+# ----------------------------------------------------
+eval $(persist load)
 
 # ------------------------
 # Maps caps lock to escape
