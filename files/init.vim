@@ -190,3 +190,10 @@ nnoremap <silent> <space>db :call vimspector#ToggleBreakpoint()<CR>
 " -------------------
 let g:airline_theme='onedark'
 colorscheme onedark
+
+
+" --------------------
+" Title
+" -------------------
+autocmd BufEnter * let &titlestring=' #app_vim ' . expand("%:t") . ' #ft_' . &filetype
+set title
