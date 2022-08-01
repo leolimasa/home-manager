@@ -56,6 +56,9 @@ systemctl enable avahi-daemon # for printing
 # Fix network print discovery
 cp $SCRIPT_DIR/nsswitch.conf /etc/nsswitch.conf
 
+# Add parallel downloads to pacman
+echo "ParallelDownloads = 5" >> /etc/pacman.conf
+
 source $SCRIPT_DIR/firewall.sh
 source $SCRIPT_DIR/grub.sh
 source $SCRIPT_DIR/initramfs.sh
