@@ -1,0 +1,2 @@
+#!/usr/bin/env zsh
+nix-shell $HOME/Code/personal/home-manager/nixenvs/$1.nix
