@@ -31,9 +31,7 @@ in
     	enable = true;
     	viAlias = true;
 	vimAlias = true;
-        configure = {
-          customRC = builtins.readFile ./files/init.vim;
-        };
+        extraConfig = builtins.readFile ./files/init.vim;
 
         plugins = with pkgs.vimPlugins; [
           vim-tmux-navigator
