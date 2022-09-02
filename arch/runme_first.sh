@@ -35,7 +35,8 @@ EOF
 
 create_swap_part() {
 	if [ -z "$CREATE_SWAP_PART" ]; then
-		echo "Create swap partition? (y/n):" read CREATE_SWAP_PART
+		echo "Create swap partition? (y/n):" 
+		read CREATE_SWAP_PART
 	fi
 
 	if [ "$CREATE_SWAP_PART" = "y" ]; then
