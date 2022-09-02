@@ -3,7 +3,7 @@
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-if [ -z "$DISK" ];
+if [ -z "$DISK" ]; then
 	echo "set DISK to where you want to install the system. Use fdisk -l to list."
 	exit 1
 fi
