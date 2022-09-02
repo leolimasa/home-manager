@@ -33,5 +33,27 @@ EOF
 	fi
 }
 
-create_boot_part
+create_swap_part() {
+	if [ -z "$CREATE_SWAP_PART" ]; then
+		echo "Create swap partition? (y/n):" read CREATE_SWAP_PART
+	fi
 
+	if [ "$CREATE_SWAP_PART" = "y" ]; then
+		# those are fdisk commands. To replicate, just get into fdisk and
+		# type the letters. Lines with no letters select the default option.
+		fdisk $DISK <<EOF
+n
+p
+
+
++2G
+t
+
+82
+w
+EOF
+	fi
+}
+
+#create_boot_part
+create_swap_part
