@@ -11,15 +11,16 @@ fi
 # Create partitions. First is EFI, then 2G swap space, and then fill the
 # rest of the disk with a linux partition.
 
-if [ -z "$CREATE_BOOT_PART" ]; then
-	echo "Create boot EFI partition? (y/n):"
-	read CREATE_BOOT_PART
-fi
+create_boot_part() {
+	if [ -z "$CREATE_BOOT_PART" ]; then
+		echo "Create boot EFI partition? (y/n):"
+		read CREATE_BOOT_PART
+	fi
 
-if [ "$CREATE_BOOT_PART" = "y" ]; then
-	# those are fdisk commands. To replicate, just get into fdisk and
-	# type the letters. Lines with no letters select the default option.
-	fdisk $DISK <<EOF
+	if [ "$CREATE_BOOT_PART" = "y" ]; then
+		# those are fdisk commands. To replicate, just get into fdisk and
+		# type the letters. Lines with no letters select the default option.
+		fdisk $DISK <<EOF
 n
 p
 
@@ -29,4 +30,8 @@ t
 ef
 w
 EOF
-fi
+	fi
+}
+
+create_boot_part
+
