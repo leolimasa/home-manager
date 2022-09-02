@@ -22,6 +22,7 @@ if command -v fzf-share >/dev/null; then
   source "$(fzf-share)/completion.bash"
 fi
 
+export FZF_DEFAULT_COMMAND = 'ag -l'
 
 # ----------------------------------------------------
 # ranger_cd: run ranger and change directories on quit

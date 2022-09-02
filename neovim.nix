@@ -54,12 +54,15 @@ in
           coc-tsserver
           coc-python
           coc-rust-analyzer
+          coc-go
           fzf-vim
-          vim-go
+          #vim-go
           vimwiki
           # vimspector
           auto-pairs
           palenight-vim
+          nvim-treesitter
+          nvim-treesitter-context
         ];
     };
 

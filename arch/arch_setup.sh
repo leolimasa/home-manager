@@ -5,7 +5,7 @@ echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wi
 
 # Downgrade kernel because i915 driver and bluetooth is f*cked on newer ones
 # pacman --needed -U https://archive.archlinux.org/^Cckages/l/linux/linux-5.14.9.arch2-1-x86_64.pkg.tar.zst
-pacman --needed -U https://archive.archlinux.org/packages/l/linux/linux-5.12.15.arch1-1-x86_64.pkg.tar.zst
+#pacman --needed -U https://archive.archlinux.org/packages/l/linux/linux-5.12.15.arch1-1-x86_64.pkg.tar.zst
 
 # Base user
 # TODO skip if user already exists

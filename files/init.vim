@@ -40,7 +40,7 @@ set number
 set relativenumber
 set cmdheight=2    " Better display for messages
 set expandtab      " Default to spaces
-set shiftwidth=2   " Default to 2 spaces for indentation
+set shiftwidth=4   " Default to 4 spaces for indentation
 set mouse=a        " Enable mouse support for everything
 let g:vim_markdown_folding_disabled = 1  " Disable markdown folding because of bug
 let g:airline_theme='onedark'
@@ -146,7 +146,12 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " -------------------
 "  Navigation
 " -------------------
-"
+
+" Create new Ag command that uses --skip-vcs-ignores to take into account
+" .gitignore
+" autocmd VimEnter * command! -bang -nargs=* Ag
+"  \ call fzf#vim#ag(<q-args>, '--skip-vcs-ignores', <bang>0)
+
 " Remap for listing buffers
 vmap <space>b  :<C-u>Buffers<cr>
 nmap <space>b  :<C-u>Buffers<cr>
@@ -169,6 +174,7 @@ nmap <space>vo  <C-w>v<C-l>:<C-u>Explore<cr>
 " ---------------
 "  FZF
 " ---------------
+
 nnoremap <silent> <space>p :FZF<cr>
 nnoremap <silent> <space>P :FZF ~<cr>
 nnoremap <silent> <space>b :Buffers<cr>
