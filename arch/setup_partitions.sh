@@ -29,6 +29,7 @@ t
 ef
 w
 EOF
+	sleep 1
 	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
 	mkfs.fat -F 32 $efipart
 }
@@ -51,6 +52,7 @@ t
 82
 w
 EOF
+	sleep 1
 	swappart=$(fdisk -l $MAIN_DISK | grep swap | awk '{print $1}')
 	mkswap $swappart
 }
@@ -70,6 +72,7 @@ p
 
 w
 EOF
+	sleep 1
 	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
 	if [ "$ENCRYPT_MAIN_PART" == "yes" ]; then
 		encrypt_main_part
@@ -78,6 +81,6 @@ EOF
 	fi
 }
 
-#create_boot_part
-#create_swap_part
+create_boot_part
+create_swap_part
 create_main_part
