@@ -15,18 +15,28 @@ source /etc/system_settings
 # Setup partitions
 # ------------------------------------------------------------------
 #source $SCRIPT_DIR/setup_partitions.sh
-if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
-	mount /dev/mapper/cryptroot /mnt
-else
-	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
-	mount $MAIN_PART /mnt
-fi
-if [ "$USE_EFI_PART" == "yes" ]; then
-	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
-	mount --mkdir $efipart /mnt/boot
-fi
+#if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
+#	mount /dev/mapper/cryptroot /mnt
+#else
+#	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
+#	mount $MAIN_PART /mnt
+#fi
+#if [ "$USE_EFI_PART" == "yes" ]; then
+#	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
+#	mount --mkdir $efipart /mnt/boot
+#fi
 
 # ------------------------------------------------------------------
-# Install base packages
+# Install base system
 # ------------------------------------------------------------------
-pacstrap /mnt base linux linux-firmware
+#pacstrap /mnt base linux linux-firmware
+#genfstab -U /mnt >> /mnt/etc/fstab
+
+# ------------------------------------------------------------------
+# Chroot to base system and setup basic config
+# ------------------------------------------------------------------
+ln $SCRIPT_DIR /mnt/tmp/arch_install
+arch-chroot /mnt
+cp /tmp/arch_install/templates/locale.gen /etc/locale.gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+echo "$MACHINE_NAME" > /etc/hostname
