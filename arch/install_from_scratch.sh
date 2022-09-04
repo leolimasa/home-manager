@@ -14,9 +14,13 @@ fi
 # ------------------------------------------------------------------
 #source $SCRIPT_DIR/setup_partitions.sh
 if [ "$ENCRYPT_MAIN_PART" == "yes" ]; then
-	mount --mkdir /dev/mapper/cryptroot /mnt
+	mount /dev/mapper/cryptroot /mnt
 else
-	mount --mkdir $MAIN_PART /mnt
+	mount $MAIN_PART /mnt
+fi
+if [ "$USE_EFI_PART" == "yes" ]; then
+	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
+	mount --mkdir $efipart /mnt/boot
 fi
 
 # ------------------------------------------------------------------
