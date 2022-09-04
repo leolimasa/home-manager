@@ -15,15 +15,16 @@ passwd leo
 # Networking
 systemctl enable NetworkManager
 
-# Xorg
-pacman -S xorg
 
 # Wayland
 #pacman --needed -S xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
 
 # KDE
-pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
-systemctl enable sddm
+if [ "$USE_KDE" = "yes" ]; then
+	pacman -S xorg
+	pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
+	systemctl enable sddm
+fi
 
 
 # Other packages

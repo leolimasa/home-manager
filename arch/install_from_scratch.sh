@@ -36,6 +36,10 @@ source /etc/system_settings
 # Chroot to base system and setup basic config
 # ------------------------------------------------------------------
 #ln -s $SCRIPT_DIR /mnt/tmp/arch_install
-cp "$SCRIPT_DIR/templates/locale.gen" /mnt/etc/locale.gen
-echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
-echo "$MACHINE_NAME" > /mnt/etc/hostname
+#cp "$SCRIPT_DIR/templates/locale.gen" /mnt/etc/locale.gen
+#echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
+#echo "$MACHINE_NAME" > /mnt/etc/hostname
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+arch-chroot /mnt hwclock --systohc
+echo "Set a root password:"
+arch-chroot /mnt passwd
