@@ -4,7 +4,7 @@ GRUB_DEFAULT=0
 GRUB_TIMEOUT=0
 GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash vt.global_cursor_default=0"
-GRUB_CMDLINE_LINUX="acpi_osi=\"Windows 2020\" cryptdevice=UUID={{CRYPT_PART_UUID}}:cryptroot root=/dev/mapper/cryptroot resume=UUID={{SWAP_PART_UUID}}"
+GRUB_CMDLINE_LINUX="{{GRUB_CMDLINE_LINUX}} resume=UUID={{SWAP_PART_UUID}}"
 
 # removed
 # i915.enable_dc=0 i915.enable_fbc=0 i915.enable_psr=0 intel_idle.max_cstate=1

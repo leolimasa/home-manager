@@ -1,2 +1,0 @@
-CRYPT_PART=nvme0n1p1
-SWAP_PART=nvme0n1p2
