@@ -4,7 +4,7 @@ set -x
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-if [ ! -z "/etc/system_settings" ]; then
+if [ ! -f "/etc/system_settings" ]; then
 	echo "No /etc/system_settings detected. Quitting."
 	exit 1
 fi
