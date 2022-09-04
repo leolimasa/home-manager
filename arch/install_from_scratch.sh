@@ -36,7 +36,6 @@ source /etc/system_settings
 # Chroot to base system and setup basic config
 # ------------------------------------------------------------------
 ln -s $SCRIPT_DIR /mnt/tmp/arch_install
-arch-chroot /mnt
-cp /tmp/arch_install/templates/locale.gen /etc/locale.gen
-echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "$MACHINE_NAME" > /etc/hostname
+cp /tmp/arch_install/templates/locale.gen /mnt/etc/locale.gen
+echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
+echo "$MACHINE_NAME" > /mnt/etc/hostname
