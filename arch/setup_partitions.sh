@@ -1,6 +1,8 @@
 #!/bin/bash
 # Run this script to setup the initial partitions.
 # This is NOT idempontent (yet). So running this more than once WILL screw things up.
+set -e
+set -x
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
@@ -76,6 +78,6 @@ EOF
 	fi
 }
 
-create_boot_part
-create_swap_part
+#create_boot_part
+#create_swap_part
 create_main_part
