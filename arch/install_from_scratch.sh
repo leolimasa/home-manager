@@ -13,9 +13,10 @@ fi
 # Setup partitions
 # ------------------------------------------------------------------
 #source $SCRIPT_DIR/setup_partitions.sh
-if [ "$ENCRYPT_MAIN_PART" == "yes" ]; then
+if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
 	mount /dev/mapper/cryptroot /mnt
 else
+	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
 	mount $MAIN_PART /mnt
 fi
 if [ "$USE_EFI_PART" == "yes" ]; then
