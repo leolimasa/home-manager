@@ -35,11 +35,30 @@ source /etc/system_settings
 # ------------------------------------------------------------------
 # Chroot to base system and setup basic config
 # ------------------------------------------------------------------
-#ln -s $SCRIPT_DIR /mnt/tmp/arch_install
+
+# Have our scripts available within chroot
+ln -s $SCRIPT_DIR/.. /mnt/tmp/home-manager
+export PATH="$PATH:/mnt/tmp/home-manager/bin"
+
+# Set hostname
+#echo "$MACHINE_NAME" > /mnt/etc/hostname
+
+# Set locale
 #cp "$SCRIPT_DIR/templates/locale.gen" /mnt/etc/locale.gen
 #echo "LANG=en_US.UTF-8" > /mnt/etc/locale.conf
-#echo "$MACHINE_NAME" > /mnt/etc/hostname
-arch-chroot /mnt ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-arch-chroot /mnt hwclock --systohc
-echo "Set a root password:"
-arch-chroot /mnt passwd
+
+# Set timezone
+#arch-chroot /mnt ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+
+# Sync system clock
+#arch-chroot /mnt hwclock --systohc
+
+# Set root password
+#echo "Set a root password:"
+#arch-chroot /mnt passwd
+
+# TODO mkinitcpio
+# TODO grub
+# TODO arch_setup
+# TODO user setup
+arch-chroot /mnt /mnt/tmp/home-manager/arch/initramfs.sh

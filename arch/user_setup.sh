@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+source /etc/system_settings
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 # Krohnkite 
 mkdir -p /tmp/builds 
 cd /tmp/builds
@@ -26,6 +30,12 @@ nix-shell '<home-manager>' -A install
 # cd google-chrome
 # makepkg
 # sudo pacman -U *.zst
+
+# Plymouth
+# We run this at the user level because it depends on AUR
+if [ "$USE_PLYMOUTH" = "yes" ]; then
+	$SCRIPT_DIR/plymouth.sh
+fi
 
 echo "!!! IMPORTANT !!!"
 echo "Edit ~/.config/nixpkgs/home.nix, add programs.home-manager.enable = true and add an import to this machine's configuration in the git repo."
