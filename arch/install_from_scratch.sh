@@ -64,4 +64,4 @@ cp -r $SCRIPT_DIR/.. /mnt/home-manager
 # TODO grub
 # TODO arch_setup
 # TODO user setup
-arch-chroot /mnt /tmp/home-manager/arch/initramfs.sh
+arch-chroot /mnt /home-manager/arch/initramfs.sh
