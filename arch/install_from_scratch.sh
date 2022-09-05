@@ -15,7 +15,7 @@ source /etc/system_settings
 # ------------------------------------------------------------------
 # Setup partitions
 # ------------------------------------------------------------------
-#source $SCRIPT_DIR/setup_partitions.sh
+source $SCRIPT_DIR/setup_partitions.sh
 #if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
 #	mount /dev/mapper/cryptroot /mnt
 #else
@@ -69,12 +69,14 @@ cp /etc/system_settings /mnt/etc/system_settings
 # ------------------------------------------------------------------
 # Install grub
 # ------------------------------------------------------------------
+arch-chroot /mnt pacman --needed -S grub 
 if [ "$USE_EFI_PART" = "yes" ]; then
-	arch-chroot /mnt pacman --needed -S grub efibootmgr
+	echo "Installing GRUB on EFI partition"
+	arch-chroot /mnt pacman --needed -S efibootmgr
 	arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot bootloader-id=GRUB
 else
-	echo "IMPLEMENT SUPPORT FOR NON EFI GRUB."
-	exit 1
+	echo "Installing GRUB on MBR"
+	arch-chroot /mnt grub-install --target=i386-pc $MAIN_DISK
 fi
 	
 # ------------------------------------------------------------------

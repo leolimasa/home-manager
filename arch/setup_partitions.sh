@@ -17,6 +17,11 @@ create_boot_part() {
 		echo "Skipping creation of EFI boot partition."
 		return
 	fi
+	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
+	if [ ! -z "$efipart" ]; then
+		echo "EFI partition detected. Skipping."
+		return 0
+	fi
 	# those are fdisk commands. To replicate, just get into fdisk and
 	# type the letters. Lines with no letters select the default option.
 	fdisk $MAIN_DISK <<EOF
@@ -35,10 +40,16 @@ EOF
 }
 
 create_swap_part() {
-	if [ "$USE_EFI_PART" != "yes" ]; then
-		echo "Skipping creation of EFI boot partition."
+	if [ "$USE_SWAP_PART" != "yes" ]; then
+		echo "Skipping creation of swap partition."
 		return
 	fi
+	swappart=$(fdisk -l $MAIN_DISK | grep swap | awk '{print $1}')
+	if [ ! -z "$swappart" ]; then
+		echo "Swap partition detected. Skipping."
+		return 0
+	fi
+
 	# those are fdisk commands. To replicate, just get into fdisk and
 	# type the letters. Lines with no letters select the default option.
 	fdisk $MAIN_DISK <<EOF
@@ -64,6 +75,11 @@ encrypt_main_part() {
 }
 
 create_main_part() {
+	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
+	if [ ! -z "$MAIN_PART" ]; then
+		echo "Main partition detected. Skipping."
+		return 0
+	fi
 	fdisk $MAIN_DISK <<EOF
 n
 p
