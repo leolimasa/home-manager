@@ -62,8 +62,6 @@ cp /etc/system_settings /mnt/etc/system_settings
 #echo "Set a root password:"
 #arch-chroot /mnt passwd
 
-# TODO mkinitcpio
-# TODO arch_setup
 # TODO user setup
 
 # ------------------------------------------------------------------
@@ -82,4 +80,4 @@ fi
 # ------------------------------------------------------------------
 # Setup rest of the system
 # ------------------------------------------------------------------
-#arch-chroot /mnt /home-manager/arch/arch_setup.sh
+arch-chroot /mnt /home-manager/arch/arch_setup.sh
