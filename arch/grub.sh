@@ -23,7 +23,7 @@ fi
 GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX $GRUB_CMDLINE_LINUX_EXTRA"
 
 cat $SCRIPT_DIR/templates/grub \
-	| sed "s/{{GRUB_CMDLINE_LINUX}}/$GRUB_CMDLINE_LINUX/g" \
-	| sed "s/{{SWAP_PART_UUID}}/$SWAP_UUID/g" \
+	| sed "s|{{GRUB_CMDLINE_LINUX}}|$GRUB_CMDLINE_LINUX|g" \
+	| sed "s|{{SWAP_PART_UUID}}|$SWAP_UUID|g" \
 	> /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
