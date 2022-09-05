@@ -1,7 +1,10 @@
 #!/bin/bash
+set -e
+set -x
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 source /etc/system_settings
+
 source $SCRIPT_DIR/modules/disk.sh
 
 if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then

@@ -77,7 +77,7 @@ arch-chroot /mnt hwclock --systohc
 # ------------------------------------------------------------------
 # Install grub
 # ------------------------------------------------------------------
-arch-chroot /mnt pacman --needed -S grub 
+arch-chroot /mnt pacman --needed -Sy grub 
 if [ "$USE_EFI_PART" = "yes" ]; then
 	echo "Installing GRUB on EFI partition"
 	arch-chroot /mnt pacman --needed -S efibootmgr

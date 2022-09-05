@@ -77,7 +77,7 @@ if [ -z "$pacman_isparallel_comment" ]; then
 		> /etc/pacman.conf
 fi
 
-source $SCRIPT_DIR/firewall.sh
-source $SCRIPT_DIR/grub.sh
-source $SCRIPT_DIR/initramfs.sh
-source $SCRIPT_DIR/suspend.sh
+$SCRIPT_DIR/firewall.sh
+$SCRIPT_DIR/initramfs.sh
+$SCRIPT_DIR/suspend.sh
+$SCRIPT_DIR/grub.sh
