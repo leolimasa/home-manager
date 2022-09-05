@@ -37,7 +37,7 @@ source /etc/system_settings
 # ------------------------------------------------------------------
 
 # Have our scripts available within chroot
-(cd $SCRIPT_DIR/.. && ln -s $PWD /mnt/tmp/home-manager)
+cp $SCRIPT_DIR/.. /mnt/home-manager
 
 # Temporarily make the settings available to chroot
 # Will be made permanent later on.
