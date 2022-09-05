@@ -3,13 +3,13 @@ source /etc/system_settings
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # Krohnkite 
-mkdir -p /tmp/builds 
-cd /tmp/builds
-curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/kwin-scripts-krohnkite-git.tar.gz
-tar -xvf kwin-scripts-krohnkite-git.tar.gz
-cd kwin-scripts-krohnkite-git
-makepkg -s -i
-makepkg -s -i # Running twice seems to build it correctly...
+# mkdir -p /tmp/builds 
+#cd /tmp/builds
+#curl -L -O https://aur.archlinux.org/cgit/aur.git/snapshot/kwin-scripts-krohnkite-git.tar.gz
+#tar -xvf kwin-scripts-krohnkite-git.tar.gz
+#cd kwin-scripts-krohnkite-git
+#makepkg -s -i
+#makepkg -s -i # Running twice seems to build it correctly...
 
 # Nix
 curl -L https://nixos.org/nix/install | sh
