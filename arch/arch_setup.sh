@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+set -x
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wifi."
