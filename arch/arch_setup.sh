@@ -15,7 +15,7 @@ if id leo &>/dev/null; then
 else
 	useradd -m leo
 	passwd leo
-	echo "leo ALL=(ALL) ALL" >> /etc/sudoers
+	echo "leo ALL=(ALL) ALL" >> /etc/sudoers.d/sudo_leo
 fi
 
 # Main packages

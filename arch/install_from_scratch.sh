@@ -87,7 +87,7 @@ fi
 arch-chroot /mnt /home-manager/arch/arch_setup.sh
 
 # User home
-arch-chroot /mnt bash -c "sudo -u leo /home-manager/arch/user_setup.sh"
+arch-chroot /mnt sudo -u leo /home-manager/arch/user_setup.sh
 
 # ------------------------------------------------------------------
 # Symlink the final user settings
