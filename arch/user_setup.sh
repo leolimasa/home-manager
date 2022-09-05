@@ -30,11 +30,6 @@ cat $SCRIPT_DIR/templates/home.nix \
 	| sed "s/{{MACHINE_NAME}}/$MACHINE_NAME/g" \
 	> $HOME/.config/nixpkgs/home.nix
 nix-channel --update
-
-# There is a bug https://github.com/nix-community/home-manager/issues/2848
-# that creates two profiles. While they don't resolve it, we have to remove
-# the second profile manually using experimental features
-
 home-manager switch
 
 # Plymouth

@@ -8,7 +8,7 @@
     #./spacevim_python.nix
     ./tmux.nix
     ./kitty.nix
-    ./zsh.nix
+    #./zsh.nix
   ];
 
 }
