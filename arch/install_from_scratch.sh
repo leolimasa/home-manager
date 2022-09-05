@@ -34,7 +34,7 @@ source $SCRIPT_DIR/setup_partitions.sh
 #genfstab -U /mnt >> /mnt/etc/fstab
 
 # ------------------------------------------------------------------
-# Chroot to base system and setup basic config
+# Basic config (hostname, locale, etc)
 # ------------------------------------------------------------------
 
 # Have our scripts available within chroot
@@ -58,22 +58,30 @@ cp /etc/system_settings /mnt/etc/system_settings
 #echo "Set a root password:"
 #arch-chroot /mnt passwd
 
-# TODO user setup
-
 # ------------------------------------------------------------------
 # Install grub
 # ------------------------------------------------------------------
-arch-chroot /mnt pacman --needed -S grub 
-if [ "$USE_EFI_PART" = "yes" ]; then
-	echo "Installing GRUB on EFI partition"
-	arch-chroot /mnt pacman --needed -S efibootmgr
-	arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot bootloader-id=GRUB
-else
-	echo "Installing GRUB on MBR"
-	arch-chroot /mnt grub-install --target=i386-pc $MAIN_DISK
-fi
+#arch-chroot /mnt pacman --needed -S grub 
+#if [ "$USE_EFI_PART" = "yes" ]; then
+#	echo "Installing GRUB on EFI partition"
+#	arch-chroot /mnt pacman --needed -S efibootmgr
+#	arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot bootloader-id=GRUB
+#else
+#	echo "Installing GRUB on MBR"
+#	arch-chroot /mnt grub-install --target=i386-pc $MAIN_DISK
+#fi
 	
 # ------------------------------------------------------------------
-# Setup rest of the system
+# Setup rest of the system in chroot
 # ------------------------------------------------------------------
-arch-chroot /mnt /home-manager/arch/arch_setup.sh
+#arch-chroot /mnt /home-manager/arch/arch_setup.sh
+
+
+# ------------------------------------------------------------------
+# Setup user home
+# ------------------------------------------------------------------
+arch-chroot sudo -u leo /home-manager/arch/user-setup.sh
+
+# ------------------------------------------------------------------
+# Symlink the final user settings
+# ------------------------------------------------------------------

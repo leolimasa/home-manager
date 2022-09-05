@@ -1,4 +1,4 @@
-MACHINE_NAME="framework_laptop"
+MACHINE_NAME="leo-framework"
 USE_EFI_PART=yes
 USE_SWAP_PART=yes
 ENCRYPT_MAIN_PART=yes
