@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Installs the entire system starting from a live arch image terminal.
 set -e
 set -x
 
@@ -38,6 +39,7 @@ source /etc/system_settings
 
 # Have our scripts available within chroot
 cp -r $SCRIPT_DIR/.. /mnt/home-manager
+cp /etc/system_settings /mnt/etc/system_settings
 
 # Temporarily make the settings available to chroot
 # Will be made permanent later on.
