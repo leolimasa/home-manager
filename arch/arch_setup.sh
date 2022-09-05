@@ -14,8 +14,9 @@ echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wi
 if id leo &>/dev/null; then
 	echo "User leo already exists. Skipping creation."
 else
-	useradd leo
+	useradd -m leo
 	passwd leo
+	echo "leo ALL=(ALL) ALL" >> /etc/sudoers
 fi
 
 # Main packages
