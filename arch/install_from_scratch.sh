@@ -86,7 +86,10 @@ else
 	echo "Installing GRUB on GPT"
 	arch-chroot /mnt grub-install --target=i386-pc $MAIN_DISK
 fi
-arch-chroot /mnt CRYPT_UUID=$(get_part_uuid $CRYPT_PART_NAME) SWAP_UUID=$(get_part_uuid $SWAP_PART_NAME) /home-manager/arch/grub.sh
+
+export CRYPT_UUID=$(get_part_uuid $CRYPT_PART_NAME)
+export SWAP_UUID=$(get_part_uuid $SWAP_PART_NAME)
+arch-chroot /mnt /home-manager/arch/grub.sh
 	
 # ------------------------------------------------------------------
 # Setup rest of the system 
