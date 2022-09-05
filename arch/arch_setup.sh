@@ -46,13 +46,13 @@ if [ "$USE_KDE" = "yes" ]; then
 	pacman -S xorg
 	pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
 	systemctl enable sddm
+	flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
 fi
 
 # Networking
 systemctl enable NetworkManager
 
 # Flatpak repos
-flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
 
 # Enable services
 systemctl enable cups
@@ -60,7 +60,7 @@ systemctl enable bluetooth
 systemctl enable avahi-daemon # for printing
 
 # Fix network print discovery
-cp $SCRIPT_DIR/nsswitch.conf /etc/nsswitch.conf
+cp $SCRIPT_DIR/templates/nsswitch.conf /etc/nsswitch.conf
 
 # Add parallel downloads to pacman
 pacman_isparallel=$(cat /etc/pacman.conf | grep -e "^ParallelDownloads")
