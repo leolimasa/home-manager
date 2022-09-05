@@ -63,8 +63,21 @@ cp /etc/system_settings /mnt/etc/system_settings
 #arch-chroot /mnt passwd
 
 # TODO mkinitcpio
-# TODO grub
 # TODO arch_setup
 # TODO user setup
-#arch-chroot /mnt /home-manager/arch/initramfs.sh
-arch-chroot /mnt /home-manager/arch/grub.sh
+
+# ------------------------------------------------------------------
+# Install grub
+# ------------------------------------------------------------------
+if [ "$USE_EFI_PART" = "yes" ]; then
+	arch-chroot /mnt pacman --needed -S grub efibootmgr
+	arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=esp bootloader-id=GRUB
+else
+	echo "IMPLEMENT SUPPORT FOR NON EFI GRUB."
+	exit 1
+fi
+	
+# ------------------------------------------------------------------
+# Setup rest of the system
+# ------------------------------------------------------------------
+#arch-chroot /mnt /home-manager/arch/arch_setup.sh
