@@ -11,26 +11,16 @@ echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wi
 
 # Base user
 # TODO skip if user already exists
-useradd leo
-passwd leo
-
-# Networking
-systemctl enable NetworkManager
-
-
-# Wayland
-#pacman --needed -S xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
-
-# KDE
-if [ "$USE_KDE" = "yes" ]; then
-	pacman -S xorg
-	pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
-	systemctl enable sddm
+if id leo &>/dev/null; then
+	echo "User leo already exists. Skipping creation."
+else
+	useradd leo
+	passwd leo
 fi
 
-
-# Other packages
+# Main packages
 pacman --needed -S /
+	networkmanager /
 	pacman-contrib /
 	sudo /
 	flatpak /
@@ -47,6 +37,19 @@ pacman --needed -S /
 	bind-tools /
 	the_silver_searcher /
 	kitty
+
+# Wayland
+#pacman --needed -S xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
+
+# KDE
+if [ "$USE_KDE" = "yes" ]; then
+	pacman -S xorg
+	pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
+	systemctl enable sddm
+fi
+
+# Networking
+systemctl enable NetworkManager
 
 # Flatpak repos
 flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
