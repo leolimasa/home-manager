@@ -71,7 +71,7 @@ cp /etc/system_settings /mnt/etc/system_settings
 # ------------------------------------------------------------------
 if [ "$USE_EFI_PART" = "yes" ]; then
 	arch-chroot /mnt pacman --needed -S grub efibootmgr
-	arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=esp bootloader-id=GRUB
+	arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot bootloader-id=GRUB
 else
 	echo "IMPLEMENT SUPPORT FOR NON EFI GRUB."
 	exit 1
