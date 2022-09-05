@@ -9,14 +9,6 @@ echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wi
 # pacman --needed -U https://archive.archlinux.org/^Cckages/l/linux/linux-5.14.9.arch2-1-x86_64.pkg.tar.zst
 #pacman --needed -U https://archive.archlinux.org/packages/l/linux/linux-5.12.15.arch1-1-x86_64.pkg.tar.zst
 
-# Base user
-if id leo &>/dev/null; then
-	echo "User leo already exists. Skipping creation."
-else
-	useradd -m leo
-	passwd leo
-	echo "leo ALL=(ALL) ALL" >> /etc/sudoers.d/sudo_leo
-fi
 
 # Main packages
 pacman --needed -S \
@@ -37,6 +29,15 @@ pacman --needed -S \
 	bind-tools \
 	the_silver_searcher \
 	kitty
+
+# Base user
+if id leo &>/dev/null; then
+	echo "User leo already exists. Skipping creation."
+else
+	useradd -m leo
+	passwd leo
+	echo "leo ALL=(ALL) ALL" > /etc/sudoers.d/sudo_leo
+fi
 
 # Wayland
 #pacman --needed -S xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
