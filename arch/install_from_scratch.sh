@@ -8,6 +8,9 @@ set -x
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
+nfig, pkgs, ... }:
+
+
 if [ ! -f "/etc/system_settings" ]; then
 	if [ -z "$SYSTEM_SETTINGS_FILE" ]; then
 		echo "No SYSTEM_SETTINGS_FILE or /etc/system_settings detected. Quitting."

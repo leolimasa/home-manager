@@ -8,14 +8,17 @@ SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 source /etc/system_settings
 
+next_part_number() {
+	partcount=$(sgdisk -p $MAIN_DISK | grep "^\s*[[:digit:]]" | wc -l)
+	echo $(($partcount+1))
+}
+
 create_gpt_table() {
 	if gdisk -l $MAIN_DISK | grep "GPT: present"; then
 		echo "GPT partition table exists. Skipping."
 		return
 	fi
-	gdisk $MAIN_DISK <<EOF
-
-EOF
+	# TODO
 }
 
 # -----------------------------------------------------------------------------
@@ -32,19 +35,12 @@ create_boot_part() {
 		echo "EFI partition detected. Skipping."
 		return 0
 	fi
-	# those are fdisk commands. To replicate, just get into fdisk and
-	# type the letters. Lines with no letters select the default option.
-	fdisk $MAIN_DISK <<EOF
-n
-p
 
-
-+512M
-t
-ef
-w
-EOF
+	# Create the partition
+	partnum=$(next_part_number)
+	sgdisk -n $partnum:0:+512M -t $partnum:ef00 -c $partnum:"EFI boot" $MAIN_DISK
 	sleep 1
+
 	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
 	mkfs.fat -F 32 $efipart
 }
@@ -60,20 +56,11 @@ create_swap_part() {
 		return 0
 	fi
 
-	# those are gdisk commands. To replicate, just get into gdisk and
-	# type the letters. Lines with no letters select the default option.
-	fdisk $MAIN_DISK <<EOF
-n
-p
-
-
-+2G
-t
-
-82
-w
-EOF
+	# Create the partition
+	partnum=$(next_part_number)
+	sgdisk -n $partnum:0:+2G -t $partnum:8200 -c $partnum:"swap" $MAIN_DISK
 	sleep 1
+
 	swappart=$(fdisk -l $MAIN_DISK | grep swap | awk '{print $1}')
 	mkswap $swappart
 }
@@ -90,15 +77,13 @@ create_main_part() {
 		echo "Main partition detected. Skipping."
 		return 0
 	fi
-	fdisk $MAIN_DISK <<EOF
-n
-p
 
-
-
-w
-EOF
+	# Create the partition
+	partnum=$(next_part_number)
+	endsector=$(sgdisk -E $MAIN_DISK)
+	sgdisk -n $partnum:0:$endsector -t $partnum:8300 -c $partnum:"arch linux" $MAIN_DISK
 	sleep 1
+
 	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
 	if [ "$ENCRYPT_MAIN_PART" == "yes" ]; then
 		encrypt_main_part
