@@ -10,8 +10,7 @@ else
 	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
 	GRUB_CMDLINE_LINUX="root=$MAIN_PART"
 fi
-SWAP_PART=$(basename $(cat /proc/swaps | grep $MAIN_DISK | awk '{print $1}'))
-
+SWAP_PART=$(fdisk -l $MAIN_DISK | grep swap | awk '{print $1}')
 blockdevs=$(lsblk -o NAME,UUID)
 SWAP_UUID=$(echo "$blockdevs" | grep $SWAP_PART[[:blank:]] | awk '{print $2}')
 

@@ -1,4 +1,4 @@
-MACHINE_NAME="qemu_vm"
+MACHINE_NAME="vm-arch-qemu-desktop"
 USE_EFI_PART=no
 USE_SWAP_PART=yes
 USE_KDE=yes
