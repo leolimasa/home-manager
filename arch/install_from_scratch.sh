@@ -17,7 +17,7 @@ source /etc/system_settings
 # ------------------------------------------------------------------
 source $SCRIPT_DIR/setup_partitions.sh
 if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
-	cryptroot_mounted=$(mount | grep /dev/mapper/cryptroot)
+	cryptroot_mounted=$(mount | grep /dev/mapper/cryptroot | awk '{print $1}')
 	if [ -z "$cryptroot_mounted" ]; then
 		echo "Mounting cryptroot"
 		mount /dev/mapper/cryptroot /mnt
