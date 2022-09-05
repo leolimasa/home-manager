@@ -19,9 +19,6 @@ pacman --needed -S \
 	base-devel \
 	cups \
 	cups-pdf \
-	bluez \
-	bluez-utils \
-	pulseaudio-bluetooth \
 	system-config-printer \
 	nss-mdns \
 	ethtool \
@@ -49,6 +46,14 @@ if [ "$USE_KDE" = "yes" ]; then
 	pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
 	systemctl enable sddm
 	flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
+fi
+
+# Bluetooth
+if [ "$USE_BLUETOOTH" = "yes" ]; then
+	pacman --needed -S \
+	bluez \
+	bluez-utils \
+	pulseaudio-bluetooth
 fi
 
 # Networking

@@ -10,8 +10,10 @@ mkdir -p $HOME/code/reviews
 mkdir -p $HOME/code/vendor
 
 # Git repo
-(cd $HOME/code/personal && git clone https://github.com/leolimasa/home-manager)
-export PATH="$PATH:$HOME/code/personal/home-manager/bin"
+if [ ! -d "$home/code/personal/home-manager" ]; then
+	(cd $HOME/code/personal && git clone https://github.com/leolimasa/home-manager)
+	export PATH="$PATH:$HOME/code/personal/home-manager/bin"
+fi
 
 # Nix
 curl -L https://nixos.org/nix/install | sh
@@ -28,6 +30,11 @@ cat $SCRIPT_DIR/templates/home.nix \
 	| sed "s/{{MACHINE_NAME}}/$MACHINE_NAME/g" \
 	> $HOME/.config/nixpkgs/home.nix
 nix-channel --update
+
+# There is a bug https://github.com/nix-community/home-manager/issues/2848
+# that creates two profiles. While they don't resolve it, we have to remove
+# the second profile manually using experimental features
+
 home-manager switch
 
 # Plymouth
