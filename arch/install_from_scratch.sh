@@ -80,7 +80,7 @@ cp /etc/system_settings /mnt/etc/system_settings
 # ------------------------------------------------------------------
 # Setup user home
 # ------------------------------------------------------------------
-arch-chroot sudo -u leo /home-manager/arch/user-setup.sh
+arch-chroot /mnt sudo -u leo /home-manager/arch/user-setup.sh
 
 # ------------------------------------------------------------------
 # Symlink the final user settings
