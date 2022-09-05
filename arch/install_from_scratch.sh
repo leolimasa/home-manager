@@ -37,12 +37,11 @@ source /etc/system_settings
 # ------------------------------------------------------------------
 
 # Have our scripts available within chroot
-ln -s $SCRIPT_DIR/.. /mnt/tmp/home-manager
-export PATH="$PATH:/mnt/tmp/home-manager/bin"
+(cd $SCRIPT_DIR/.. && ln -s $PWD /mnt/tmp/home-manager)
 
 # Temporarily make the settings available to chroot
 # Will be made permanent later on.
-ln -s /etc/system_settings /mnt/etc/system_settings
+/#ln -s /etc/system_settings /mnt/etc/system_settings
 
 # Set hostname
 #echo "$MACHINE_NAME" > /mnt/etc/hostname
