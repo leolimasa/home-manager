@@ -1,6 +1,5 @@
-SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-
 SWAP_PART_NAME="swap_cesh3"
+CRYPT_PART_NAME="crypt_h5v60"
 MAIN_PART_NAME="arch_linux_1xq2h"
 EFI_PART_NAME="efi_y8jo3"
 
@@ -10,7 +9,11 @@ next_part_number() {
 }
 
 get_part_path() {
-	lsblk -l -o PATH,PARTLABEL | grep $1 | awk '{print $1}'
+	lsblk -l -o PATH,PARTLABEL,NAME | grep $1 | awk '{print $1}'
+}
+
+get_part_uuid() {
+	lsblk -l -o UUID,PARTLABEL,NAME | grep $1 | awk '{print $1}'
 }
 
 
@@ -65,7 +68,7 @@ create_main_part() {
 
 	MAIN_PART=$(get_part_path "$MAIN_PART_NAME")
 	if [ "$ENCRYPT_MAIN_PART" == "yes" ]; then
-		encrypt_part $MAIN_PART cryptroot
+		encrypt_part $MAIN_PART $CRYPT_PART_NAME
 	else
 		mkfs -t ext4 $MAIN_PART
 	fi
