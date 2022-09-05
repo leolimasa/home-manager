@@ -16,15 +16,24 @@ source /etc/system_settings
 # Setup partitions
 # ------------------------------------------------------------------
 source $SCRIPT_DIR/setup_partitions.sh
-if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
-	mount /dev/mapper/cryptroot /mnt
+if [ "$ENCRYPT_MAIN_PART" = "yes" ] && [ -z "$cryptroot_mounted" ]; then
+	cryptroot_mounted=$(mount | grep /dev/mapper/cryptroot)
+	if [ -z "$cryptroot_mounted" ]; then
+		mount /dev/mapper/cryptroot /mnt
+	fi
 else
 	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
-	mount $MAIN_PART /mnt
+	main_mounted=$(mount | grep $MAIN_PART)
+	if [ -z "$main_mounted" ]; then
+		mount $MAIN_PART /mnt
+	fi
 fi
 if [ "$USE_EFI_PART" == "yes" ]; then
 	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
-	mount --mkdir $efipart /mnt/boot
+	efimounted=$(mount | grep $efipart)
+	if [ -z "$efimounted" ]; then
+		mount --mkdir $efipart /mnt/boot
+	fi
 fi
 
 # ------------------------------------------------------------------
