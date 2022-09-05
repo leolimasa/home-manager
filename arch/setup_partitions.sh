@@ -75,8 +75,8 @@ encrypt_main_part() {
 }
 
 create_main_part() {
-	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
-	if [ ! -z "$MAIN_PART" ]; then
+	MAIN_PART_BLOCK=$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
+	if [ ! -z "$MAIN_PART_BLOCK" ]; then
 		echo "Main partition detected. Skipping."
 		return 0
 	fi
