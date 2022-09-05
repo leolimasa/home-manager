@@ -61,4 +61,4 @@ export PATH="$PATH:/mnt/tmp/home-manager/bin"
 # TODO grub
 # TODO arch_setup
 # TODO user setup
-arch-chroot /mnt /mnt/tmp/home-manager/arch/initramfs.sh
+arch-chroot /mnt /tmp/home-manager/arch/initramfs.sh
