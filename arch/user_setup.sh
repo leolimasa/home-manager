@@ -10,7 +10,7 @@ mkdir -p $HOME/code/reviews
 mkdir -p $HOME/code/vendor
 
 # Git repo
-if [ ! -d "$home/code/personal/home-manager" ]; then
+if [ ! -d "$HOME/code/personal/home-manager" ]; then
 	(cd $HOME/code/personal && git clone https://github.com/leolimasa/home-manager)
 	export PATH="$PATH:$HOME/code/personal/home-manager/bin"
 fi
