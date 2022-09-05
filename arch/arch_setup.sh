@@ -63,9 +63,11 @@ systemctl enable avahi-daemon # for printing
 cp $SCRIPT_DIR/templates/nsswitch.conf /etc/nsswitch.conf
 
 # Add parallel downloads to pacman
-pacman_isparallel=$(cat /etc/pacman.conf | grep -e "^ParallelDownloads")
-if [ -z "$pacman_isparallel" ]; then
-	echo "ParallelDownloads = 5" >> /etc/pacman.conf
+pacman_isparallel_comment=$(cat /etc/pacman.conf | grep "#ParallelDownloads")
+if [ -z "$pacman_isparallel_comment" ]; then
+	cat /etc/pacman.conf \
+		| sed "s/#ParallelDownloads/ParallelDownloads/g" \
+		> /etc/pacman.conf
 fi
 
 source $SCRIPT_DIR/firewall.sh
