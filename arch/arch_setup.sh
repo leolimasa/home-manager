@@ -19,23 +19,23 @@ else
 fi
 
 # Main packages
-pacman --needed -S /
-	networkmanager /
-	pacman-contrib /
-	sudo /
-	flatpak /
-	base-devel /
-	cups /
-	cups-pdf /
-	bluez /
-	bluez-utils /
-	pulseaudio-bluetooth /
-	system-config-printer /
-	nss-mdns /
-	ethtool /
-	net-tools /
-	bind-tools /
-	the_silver_searcher /
+pacman --needed -S \
+	networkmanager \
+	pacman-contrib \
+	sudo \
+	flatpak \
+	base-devel \
+	cups \
+	cups-pdf \
+	bluez \
+	bluez-utils \
+	pulseaudio-bluetooth \
+	system-config-printer \
+	nss-mdns \
+	ethtool \
+	net-tools \
+	bind-tools \
+	the_silver_searcher \
 	kitty
 
 # Wayland
