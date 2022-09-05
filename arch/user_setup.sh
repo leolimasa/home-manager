@@ -35,6 +35,6 @@ home-manager switch
 
 # Plymouth
 # We run this at the user level because it depends on AUR
-if [ "$USE_PLYMOUTH" = "yes" ]; then
-	$SCRIPT_DIR/plymouth.sh
-fi
+#if [ "$USE_PLYMOUTH" = "yes" ]; then
+#	$SCRIPT_DIR/plymouth.sh
+#fi

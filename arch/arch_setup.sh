@@ -80,4 +80,3 @@ fi
 $SCRIPT_DIR/firewall.sh
 $SCRIPT_DIR/initramfs.sh
 $SCRIPT_DIR/suspend.sh
-$SCRIPT_DIR/grub.sh
