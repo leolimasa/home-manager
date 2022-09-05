@@ -28,6 +28,7 @@ pacman --needed -S \
 	net-tools \
 	bind-tools \
 	the_silver_searcher \
+	git \
 	kitty
 
 # Base user
