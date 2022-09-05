@@ -17,6 +17,8 @@ source $SCRIPT_DIR/modules/disk.sh
 
 if [ "$USE_EFI_PART" = "yes" ]; then
 	create_efi_part $MAIN_DISK
+else
+	create_gpt_bios_part $MAIN_DISK
 fi
 if [ "$USE_SWAP_PART" = "yes" ]; then
 	create_swap_part $MAIN_DISK

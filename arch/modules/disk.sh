@@ -2,6 +2,7 @@ SWAP_PART_NAME="swap_cesh3"
 CRYPT_PART_NAME="crypt_h5v60"
 MAIN_PART_NAME="arch_linux_1xq2h"
 EFI_PART_NAME="efi_y8jo3"
+GPT_BIOS_PART_NAME="gpt_bios_8y6q8"
 
 next_part_number() {
 	partcount=$(sgdisk -p $MAIN_DISK | grep "^\s*[[:digit:]]" | wc -l)
@@ -30,6 +31,18 @@ create_efi_part() {
 	sgdisk -n $partnum:0:+512M -t $partnum:ef00 -c $partnum:"$EFI_PART_NAME" $disk
 	sleep 1
 	mkfs.fat -F 32 $(get_part_path $EFI_PART_NAME)
+}
+
+create_gpt_bios_part() {
+	disk=$1
+	if [ ! -z "$(get_part_path $GPT_BIOS_PART_NAME)" ]; then
+		echo "BIOS partition detected. Skipping."
+		return 0
+	fi
+	partnum=$(next_part_number)
+
+	# See https://wiki.archlinux.org/title/GRUB#GUID_Partition_Table_(GPT)_specific_instructions
+	sgdisk -n $partnum:0:+1M -t $partnum:ef02 -u $partnum:"21686148-6449-6E6F-744E-656564454649" -c $partnum:"$GPT_BIOS_PART_NAME" $disk
 }
 
 create_swap_part() {
