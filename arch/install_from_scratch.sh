@@ -25,20 +25,20 @@ source /etc/system_settings
 # ------------------------------------------------------------------
 source $SCRIPT_DIR/setup_partitions.sh
 if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
-	cryptroot_mounted=$(mount | grep /dev/mapper/cryptroot | awk '{print $1}')
+	cryptroot_mounted=$(mount | grep $(get_part_path $CRYPT_PART_NAME) | awk '{print $1}')
 	if [ -z "$cryptroot_mounted" ]; then
-		echo "Mounting cryptroot"
-		mount /dev/mapper/cryptroot /mnt
+		echo "Mounting encrypted partition"
+		mount $(get_part_path $CRYPT_PART_NAME) /mnt
 	fi
 else
-	MAIN_PART=/dev/$(lsblk -ln -o NAME,PARTTYPE $MAIN_DISK | grep 0x83 | awk '{print $1}')
+	MAIN_PART=$(get_part_path $MAIN_PART_NAME)
 	main_mounted=$(mount | grep $MAIN_PART)
 	if [ -z "$main_mounted" ]; then
 		mount $MAIN_PART /mnt
 	fi
 fi
 if [ "$USE_EFI_PART" == "yes" ]; then
-	efipart=$(fdisk -l $MAIN_DISK | grep EFI | awk '{print $1}')
+	efipart=$(get_part_path $EFI_PART_NAME)
 	efimounted=$(mount | grep $efipart)
 	if [ -z "$efimounted" ]; then
 		mount --mkdir $efipart /mnt/boot
