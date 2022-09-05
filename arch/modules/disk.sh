@@ -42,7 +42,7 @@ create_gpt_bios_part() {
 	partnum=$(next_part_number)
 
 	# See https://wiki.archlinux.org/title/GRUB#GUID_Partition_Table_(GPT)_specific_instructions
-	sgdisk -n $partnum:0:+1M -t $partnum:ef02 -U $partnum:"21686148-6449-6E6F-744E-656564454649" -c $partnum:"$GPT_BIOS_PART_NAME" $disk
+	sgdisk -n $partnum:0:+1M -t $partnum:ef02 -u $partnum:"21686148-6449-6E6F-744E-656564454649" -c $partnum:"$GPT_BIOS_PART_NAME" $disk
 }
 
 create_swap_part() {
