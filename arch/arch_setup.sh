@@ -10,7 +10,6 @@ echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wi
 #pacman --needed -U https://archive.archlinux.org/packages/l/linux/linux-5.12.15.arch1-1-x86_64.pkg.tar.zst
 
 # Base user
-# TODO skip if user already exists
 if id leo &>/dev/null; then
 	echo "User leo already exists. Skipping creation."
 else
