@@ -9,7 +9,7 @@ source $SCRIPT_DIR/modules/disk.sh
 
 if [ "$ENCRYPT_MAIN_PART" = "yes" ]; then
 	if [ -z "$CRYPT_UUID" ]; then
-		CRYPT_UUID=$(get_part_uuid $CRYPT_PART_NAME)
+		CRYPT_UUID=$(get_part_uuid $MAIN_PART_NAME)
 	fi
 	GRUB_CMDLINE_LINUX="cryptdevice=UUID=$CRYPT_UUID:$CRYPT_PART_NAME root=$(get_part_path $CRYPT_PART_NAME)"
 else

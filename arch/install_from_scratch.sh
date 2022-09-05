@@ -87,9 +87,10 @@ else
 	arch-chroot /mnt grub-install --target=i386-pc $MAIN_DISK
 fi
 
-export CRYPT_UUID=$(get_part_uuid $CRYPT_PART_NAME)
+# These will be used by arch_setup / grub.sh later
+# We can't read those within arch-chroot.
+export CRYPT_UUID=$(get_part_uuid $MAIN_PART_NAME)
 export SWAP_UUID=$(get_part_uuid $SWAP_PART_NAME)
-arch-chroot /mnt /home-manager/arch/grub.sh
 	
 # ------------------------------------------------------------------
 # Setup rest of the system 
@@ -97,13 +98,6 @@ arch-chroot /mnt /home-manager/arch/grub.sh
 
 # Main packages
 arch-chroot /mnt /home-manager/arch/arch_setup.sh
-
-# User home
-arch-chroot /mnt sudo -u leo /home-manager/arch/user_setup.sh
-
-# ------------------------------------------------------------------
-# Symlink the final user settings
-# ------------------------------------------------------------------
 
 # Set root password
 echo "Set a root password:"
