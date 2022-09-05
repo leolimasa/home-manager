@@ -54,6 +54,7 @@ if [ "$USE_BLUETOOTH" = "yes" ]; then
 	bluez \
 	bluez-utils \
 	pulseaudio-bluetooth
+	systemctl enable bluetooth
 fi
 
 # Networking
@@ -63,7 +64,6 @@ systemctl enable NetworkManager
 
 # Enable services
 systemctl enable cups
-systemctl enable bluetooth
 systemctl enable avahi-daemon # for printing
 
 # Fix network print discovery

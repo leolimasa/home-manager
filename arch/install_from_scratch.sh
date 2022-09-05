@@ -1,13 +1,21 @@
 #!/usr/bin/env bash
 # Installs the entire system starting from a live arch image terminal.
+# Copy and paste this to start:
+#
+# pacman -Sy git && git clone https://github.com/leolimasa/home-manager.git
 set -e
 set -x
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 if [ ! -f "/etc/system_settings" ]; then
-	echo "No /etc/system_settings detected. Quitting."
-	exit 1
+	if [ -z "$SYSTEM_SETTINGS_FILE" ]; then
+		echo "No SYSTEM_SETTINGS_FILE or /etc/system_settings detected. Quitting."
+		exit 1
+	else
+		echo "Linking system settings"
+		ln -s $SCRIPT_DIR/configs/$SYSTEM_SETTINGS_FILE /etc/system_settings
+	fi
 fi
 
 source /etc/system_settings

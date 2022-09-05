@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run this script to setup the initial partitions.
+# Run this script to setup the initial partitions using GPT.
 # This is NOT idempontent (yet). So running this more than once WILL screw things up.
 set -e
 set -x
@@ -7,6 +7,16 @@ set -x
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 source /etc/system_settings
+
+create_gpt_table() {
+	if gdisk -l $MAIN_DISK | grep "GPT: present"; then
+		echo "GPT partition table exists. Skipping."
+		return
+	fi
+	gdisk $MAIN_DISK <<EOF
+
+EOF
+}
 
 # -----------------------------------------------------------------------------
 # Create partitions. First is EFI, then 2G swap space, and then fill the
@@ -50,7 +60,7 @@ create_swap_part() {
 		return 0
 	fi
 
-	# those are fdisk commands. To replicate, just get into fdisk and
+	# those are gdisk commands. To replicate, just get into gdisk and
 	# type the letters. Lines with no letters select the default option.
 	fdisk $MAIN_DISK <<EOF
 n
