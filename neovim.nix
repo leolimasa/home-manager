@@ -2,8 +2,7 @@
 
 # Not using this currently, but leaving here as an example of how to
 # setup a custom vim plugin.
-let
-  vim-breezy-theme = pkgs.vimUtils.buildVimPlugin {
+let vim-breezy-theme = pkgs.vimUtils.buildVimPlugin {
     name = "vim-breezy-theme";
     src = pkgs.fetchFromGitHub {
       owner = "fneu";
@@ -41,6 +40,7 @@ in
           vim-dadbod
           vim-dadbod-ui
           vim-dadbod-completion
+          vim-solidity
           #vim-breezy-theme
           onedark-vim
           #tender-vim
@@ -48,8 +48,7 @@ in
           vim-one
           fugitive	
           coc-nvim
-          coc-json
-          coc-css
+          coc-json coc-css
           coc-yaml
           coc-tsserver
           coc-python
@@ -63,6 +62,7 @@ in
           palenight-vim
           nvim-treesitter
           nvim-treesitter-context
+          vim-racket
         ];
     };
 

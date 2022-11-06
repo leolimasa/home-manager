@@ -20,3 +20,4 @@ if [ "$1" == "edit" ]; then
   exit
 fi
 
+echo "Options are: load, add, edit"

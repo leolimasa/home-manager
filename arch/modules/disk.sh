@@ -17,7 +17,6 @@ get_part_uuid() {
 	lsblk -l -o UUID,PARTLABEL,NAME | grep $1 | awk '{print $1}'
 }
 
-
 create_efi_part() {
 	disk=$1
 	efipart=$(get_part_path $EFI_PART_NAME)

@@ -9,6 +9,13 @@ echo "Use \"nmcli device wifi connect [SSID] password [PASSWORD]\" to connect wi
 # pacman --needed -U https://archive.archlinux.org/^Cckages/l/linux/linux-5.14.9.arch2-1-x86_64.pkg.tar.zst
 #pacman --needed -U https://archive.archlinux.org/packages/l/linux/linux-5.12.15.arch1-1-x86_64.pkg.tar.zst
 
+# Add parallel downloads to pacman
+pacman_isparallel_comment=$(cat /etc/pacman.conf | grep "#ParallelDownloads")
+if [ ! -z "$pacman_isparallel_comment" ]; then
+	cat /etc/pacman.conf \
+		| sed "s/#ParallelDownloads/ParallelDownloads/g" \
+		> /etc/pacman.conf
+fi
 
 # Main packages
 pacman --needed -S \
@@ -26,7 +33,9 @@ pacman --needed -S \
 	bind-tools \
 	the_silver_searcher \
 	git \
-	kitty
+	kitty \
+	pipewire-pulse \
+	pipewire-alsa
 
 # Base user
 if id leo &>/dev/null; then
@@ -69,13 +78,6 @@ systemctl enable avahi-daemon # for printing
 # Fix network print discovery
 cp $SCRIPT_DIR/templates/nsswitch.conf /etc/nsswitch.conf
 
-# Add parallel downloads to pacman
-pacman_isparallel_comment=$(cat /etc/pacman.conf | grep "#ParallelDownloads")
-if [ -z "$pacman_isparallel_comment" ]; then
-	cat /etc/pacman.conf \
-		| sed "s/#ParallelDownloads/ParallelDownloads/g" \
-		> /etc/pacman.conf
-fi
 
 $SCRIPT_DIR/firewall.sh
 $SCRIPT_DIR/initramfs.sh

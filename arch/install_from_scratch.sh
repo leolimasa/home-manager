@@ -80,7 +80,7 @@ arch-chroot /mnt hwclock --systohc
 arch-chroot /mnt pacman --needed -Sy grub 
 if [ "$USE_EFI_PART" = "yes" ]; then
 	echo "Installing GRUB on EFI partition"
-	arch-chroot /mnt pacman --needed -S efibootmgr
+	arch-chroot /mnt pacman --needed -Sy efibootmgr
 	arch-chroot /mnt grub-install --target=x86_64-efi --efi-directory=/boot bootloader-id=GRUB
 else
 	echo "Installing GRUB on GPT"
