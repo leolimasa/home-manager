@@ -35,7 +35,8 @@ pacman --needed -S \
 	git \
 	kitty \
 	pipewire-pulse \
-	pipewire-alsa
+	pipewire-alsa \
+	moreutils
 
 # Base user
 if id leo &>/dev/null; then
@@ -52,7 +53,7 @@ fi
 # KDE
 if [ "$USE_KDE" = "yes" ]; then
 	pacman -S xorg
-	pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm
+	pacman --needed -S plasma-meta plasma-wayland-session kde-applications-meta sddm calligra
 	systemctl enable sddm
 	flatpak remote-add --if-not-exists kdeapps --from https://distribute.kde.org/kdeapps.flatpakrepo
 fi

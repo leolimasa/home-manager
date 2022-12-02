@@ -28,6 +28,10 @@
       any-nix-shell zsh | source /dev/stdin
       export PS1=$'%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info) %{$fg[blue]%}%*%{$reset_color%} %{$fg_bold[yellow]%}$ENV_NAME%{$reset_color%}\n$ '
       export FZF_DEFAULT_COMMAND='ag -l'
+      export GPG_TTY="$(tty)"
+      export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+      gpg-connect-agent updatestartuptty /bye > /dev/null
+      export DEFAULT_SHELL=$(which zsh)
       '';
 
       oh-my-zsh = {
