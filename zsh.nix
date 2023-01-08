@@ -15,9 +15,14 @@
       enableSyntaxHighlighting = true;
       initExtraFirst = 
       ''
-      source $HOME/.nix-profile/etc/profile.d/nix.sh
-      export NIX_PATH=$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels
-      export PATH=$PATH:$HOME/Code/personal/home-manager/bin
+      source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+      export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels
+      export PATH=$PATH:$HOME/code/personal/home-manager/bin
+      # Nix
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+         . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+      # End Nix
       '';
 
       initExtra =
