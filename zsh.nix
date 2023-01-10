@@ -17,7 +17,7 @@
       ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
       export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels
-      export PATH=$PATH:$HOME/code/personal/home-manager/bin
+      export PATH=$PATH:$HOME/pr/personal/home-manager/bin
       # Nix
       if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
          . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
@@ -34,8 +34,9 @@
       export PS1=$'%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info) %{$fg[blue]%}%*%{$reset_color%} %{$fg_bold[yellow]%}$ENV_NAME%{$reset_color%}\n$ '
       export FZF_DEFAULT_COMMAND='ag -l'
       export GPG_TTY="$(tty)"
-      export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-      gpg-connect-agent updatestartuptty /bye > /dev/null
+      # Uncomment for yubikey
+      #export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+      #gpg-connect-agent updatestartuptty /bye > /dev/null
       export DEFAULT_SHELL=$(which zsh)
       '';
 
