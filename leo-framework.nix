@@ -2,8 +2,8 @@
 {
   imports = [
     ./main.nix
-    ./neovim.nix
-    ./neovim_python.nix
+    ./neovim2.nix
+    #./neovim_python.nix
     #./spacevim.nix
     #./spacevim_python.nix
     ./tmux.nix

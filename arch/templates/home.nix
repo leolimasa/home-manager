@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ~/code/personal/home-manager/{{MACHINE_NAME}}.nix
+    ~/pr/personal/home-manager/{{MACHINE_NAME}}.nix
   ];
 
   # Home Manager needs a bit of information about you and the

@@ -5,16 +5,16 @@ source /etc/system_settings
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 # Default directories
-mkdir -p $HOME/code/personal
-mkdir -p $HOME/code/reviews
-mkdir -p $HOME/code/vendor
+mkdir -p $HOME/pr/personal
+mkdir -p $HOME/pr/reviews
+mkdir -p $HOME/pr/vendor
 
 # Git repo
-if [ ! -d "$HOME/code/personal/home-manager" ]; then
-	(cd $HOME/code/personal && git clone https://github.com/leolimasa/home-manager)
+if [ ! -d "$HOME/pr/personal/home-manager" ]; then
+	(cd $HOME/pr/personal && git clone https://github.com/leolimasa/home-manager)
 fi
 
-export PATH="$PATH:$HOME/code/personal/home-manager/bin"
+export PATH="$PATH:$HOME/pr/personal/home-manager/bin"
 
 # Nix
 curl -L https://nixos.org/nix/install | sh

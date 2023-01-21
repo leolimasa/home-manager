@@ -29,6 +29,7 @@
       ranger
       ripgrep
       silver-searcher
+      imagemagick
     ];
 
     fonts.fontconfig.enable = true;
