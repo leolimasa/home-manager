@@ -1,0 +1,16 @@
+#!/bin/bash
+##!/usr/bin/env python3
+
+cat <&0 | python3 -mjson.tool
+
+#import json
+#import fileinput
+#import ast
+
+#content = ''
+
+#for line in fileinput.input():
+#	content = content + line
+#evald = ast.literal_eval(content)
+
+#print(json.dumps(evald, indent=4))
