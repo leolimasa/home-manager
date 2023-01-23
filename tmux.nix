@@ -4,6 +4,7 @@
 
   config = {
     home.packages = with pkgs; [
+      xclip
     ];
 
     programs.tmux = {

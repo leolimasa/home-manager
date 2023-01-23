@@ -3,7 +3,7 @@
 # ------------------------
 . $HOME/.nix-profile/etc/profile.d/nix.sh
 export NIX_PATH=$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels:$HOME/.nix-defexpr/channels
-export PATH=$PATH:$HOME/Code/personal/home-manager/bin
+export PATH=$PATH:$HOME/pr/personal/home-manager/bin
 
 
 # ------------------------
