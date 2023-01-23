@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -e
+[[ -z "$CLIPBOARD_FILE" ]] && $CLIPBOARD_FILE="/tmp/${USER}_clipboard"
+
+contents=$(cat -)
+echo -e "$contents" > "$CLIPBOARD_FILE"
+echo -e "$contents"

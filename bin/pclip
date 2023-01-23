@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -e
+tempfile="/tmp/${USER}_clipboard"
+cat "$tempfile"

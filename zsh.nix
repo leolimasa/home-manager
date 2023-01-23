@@ -25,13 +25,16 @@
       # End Nix
       '';
 
+      # TO add git info to zsh, use:
+      # export PS1=$'%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info) %{$fg[blue]%}%*%{$reset_color%} %{$fg_bold[yellow]%}$ENV_NAME%{$reset_color%}\n$ '
+
       initExtra =
       ''
       eval $(persist load)
       source "$(fzf-share)/key-bindings.zsh"
       source "$(fzf-share)/completion.zsh"
       any-nix-shell zsh | source /dev/stdin
-      export PS1=$'%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info) %{$fg[blue]%}%*%{$reset_color%} %{$fg_bold[yellow]%}$ENV_NAME%{$reset_color%}\n$ '
+      export PS1=$'%{$fg_bold[green]%}%~%{$reset_color%} %{$fg[blue]%}%*%{$reset_color%} %{$fg_bold[yellow]%}$ENV_NAME%{$reset_color%}\n$ '
       export FZF_DEFAULT_COMMAND='ag -l'
       export GPG_TTY="$(tty)"
       # Uncomment for yubikey
