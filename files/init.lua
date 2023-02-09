@@ -480,7 +480,7 @@ cmp.setup {
 local signs = {
   Error = " ",
   Warn = " ",
-  Hint = "󰌵 ",
+  Hint = " ",
   Info = " "
 }
 
