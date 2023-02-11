@@ -31,6 +31,8 @@
       ripgrep
       silver-searcher
       imagemagick
+      lazygit
+      sshfs
     ];
 
     fonts.fontconfig.enable = true;
