@@ -9,4 +9,7 @@
     ./xdg.nix
   ];
 
+  home.file.".config/kitty/custom-settings.conf".text = ''
+    font_size 12.0
+  '';
 }
