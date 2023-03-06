@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -z $1 ]; then
+	echo "First argument must be the remote server SSH path. Ex.: leo@server.com:/some/folder"
+	exit 1
+fi
+
+if [ -z $2 ]; then
+	echo "Second argument must be the local mount point."
+	exit 1
+fi
+
+sshfs -o allow_other,uid=$(id -u),gid=$(id -g) $1 $2
