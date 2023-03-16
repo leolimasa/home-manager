@@ -391,10 +391,10 @@ local servers = {
   --     telemetry = { enable = false },
   --   },
   -- },
-  jdtls = {
-    cmd = {'jdt-language-server'},
-    root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
-  }
+  -- jdtls = {
+  --  cmd = {'jdt-language-server'},
+  --  root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+  -- }
 }
 
 -- Setup neovim lua configuration

@@ -33,6 +33,7 @@
       imagemagick
       lazygit
       sshfs
+      racket
     ];
 
     fonts.fontconfig.enable = true;
