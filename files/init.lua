@@ -55,6 +55,7 @@ require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
+  use {'romgrk/barbar.nvim', requires = 'nvim-tree/nvim-web-devicons'} -- pretty tabs
 
   -- Fuzzy Finder (files, lsp, etc)
   use { 'nvim-telescope/telescope.nvim', branch = '0.1.x', requires = { 'nvim-lua/plenary.nvim' } }
@@ -72,6 +73,9 @@ require('packer').startup(function(use)
 
   -- netrw file browser alternative
   use { "nvim-telescope/telescope-file-browser.nvim" }
+
+  -- Java lsp
+  use 'mfussenegger/nvim-jdtls'
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
@@ -381,13 +385,16 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-
-  sumneko_lua = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-    },
-  },
+  -- sumneko_lua = {
+  --   Lua = {
+  --     workspace = { checkThirdParty = false },
+  --     telemetry = { enable = false },
+  --   },
+  -- },
+  jdtls = {
+    cmd = {'jdt-language-server'},
+    root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
+  }
 }
 
 -- Setup neovim lua configuration
@@ -490,3 +497,4 @@ for type, icon in pairs(signs) do
 end
 
 
+ require'lspconfig'.jdtls.setup{}
