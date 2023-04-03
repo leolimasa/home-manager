@@ -39,7 +39,7 @@ in
     };
 
     #home.file.".config/nvim/coc-settings.json".text = builtins.readFile ./files/coc-settings.json;
-    #home.file.".config/nvim/init.lua".text = builtins.readFile ./files/init.lua;
+    home.file.".config/astronvim/lua/user/init.lua".text = builtins.readFile ./files/astronvim.lua;
     home.file.".config/nvim".source = pkgs.fetchFromGitHub {
        owner = "AstroNvim";
        repo = "AstroNvim";

@@ -77,6 +77,12 @@ require('packer').startup(function(use)
   -- Java lsp
   use 'mfussenegger/nvim-jdtls'
 
+  -- LISP
+  use 'kovisoft/slimv'
+
+  -- Coq
+  use 'whonore/Coqtail'
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
