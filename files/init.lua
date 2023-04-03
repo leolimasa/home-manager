@@ -237,7 +237,12 @@ require('telescope').setup {
 
 -- Enable the telescope file browser extension
 require("telescope").load_extension "file_browser"
-vim.keymap.set('n', '<leader>o', require('telescope').extensions.file_browser.file_browser, { desc = '[O]pen File' })
+vim.keymap.set('n', '<leader>o', function() 
+  require('telescope').extensions.file_browser.file_browser {
+    path = "%:p:h",
+    select_buffer = true
+  }
+end, { desc = '[O]pen File' })
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
