@@ -21,9 +21,37 @@ return {
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-cmdline',
 			'hrsh7th/cmp-vsnip',
+			'windwp/nvim-autopairs'
 		},
 		config = function()
 			local cmp = require("cmp")
+			local lsp_symbols = {
+				Text = "   (Text) ",
+				Method = "   (Method)",
+				Function = "   (Function)",
+				Constructor = "   (Constructor)",
+				Field = " ﴲ  (Field)",
+				Variable = "[] (Variable)",
+				Class = "   (Class)",
+				Interface = " ﰮ  (Interface)",
+				Module = "   (Module)",
+				Property = " 襁 (Property)",
+				Unit = "   (Unit)",
+				Value = "   (Value)",
+				Enum = " 練 (Enum)",
+				Keyword = "   (Keyword)",
+				Snippet = "   (Snippet)",
+				Color = "   (Color)",
+				File = "   (File)",
+				Reference = "   (Reference)",
+				Folder = "   (Folder)",
+				EnumMember = "   (EnumMember)",
+				Constant = " ﲀ  (Constant)",
+				Struct = " ﳤ  (Struct)",
+				Event = "   (Event)",
+				Operator = "   (Operator)",
+				TypeParameter = "   (TypeParameter)",
+			}
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -35,10 +63,60 @@ return {
 					{ name = 'nvim_lsp' },
 					{ name = 'vsnip' },
 					{ name = 'path' },
-				}, {
-					{ name = 'buffer' },
-				}
+					-- Autocomplete using all buffers
+					{
+						name = 'buffer',
+						option = {
+							get_bufnrs = function()
+								return vim.api.nvim_list_bufs()
+							end
+						}
+					}
+				},
+				formatting = {
+					format = function(entry, item)
+						item.kind = lsp_symbols[item.kind]
+						item.menu = ({
+							buffer = "[Buffer]",
+							nvim_lsp = "[LSP]",
+							luasnip = "[Snippet]",
+							vsnip = "[Snippet]",
+							neorg = "[Neorg]",
+						})[entry.source.name]
+						return item
+					end,
+				},
+				mapping = cmp.mapping.preset.insert {
+					['<C-d>'] = cmp.mapping.scroll_docs(-4),
+					['<C-f>'] = cmp.mapping.scroll_docs(4),
+					['<C-Space>'] = cmp.mapping.complete(),
+					['<CR>'] = cmp.mapping.confirm {
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = true,
+					},
+					['<Tab>'] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						else
+							fallback()
+						end
+					end, { 'i', 's' }),
+					['<S-Tab>'] = cmp.mapping(function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						else
+							fallback()
+						end
+					end, { 'i', 's' }),
+				},
 			})
+
+			-- Connect cmp to autopairs
+			local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+			cmp.event:on(
+				'confirm_done',
+				cmp_autopairs.on_confirm_done()
+			)
 		end
 	},
 
@@ -53,48 +131,52 @@ return {
 
 	-- Manage and install LSP server binaries
 	{
-	    "williamboman/mason.nvim",
-	    lazy = false,
-	    config = function()
-		require("mason").setup()
-	    end
+		"williamboman/mason.nvim",
+		lazy = false,
+		config = function()
+			require("mason").setup()
+		end
 	},
 
 	-- Ensure Mason plays well with nvim-lspconfig
 	{
-	    "williamboman/mason-lspconfig.nvim",
-	    lazy = false,
-	    dependencies = {
-		    'hrsh7th/nvim-cmp',
-		    'hrsh7th/cmp-nvim-lsp',
-	    },
-	    config = function()
-		local mason_lspconfig = require("mason-lspconfig")
-		mason_lspconfig.setup{
-			ensure_installed = { "lua_ls" },
-			automatic_installations = true
-		}
-		-- Have mason start an lspconfig when attached to a buffer
-		mason_lspconfig.setup_handlers {
-			function(server_name)
-				local capabilities = require('cmp_nvim_lsp').default_capabilities()
-				require('lspconfig')[server_name].setup {
-					capabilities = capabilities
-				}
-			end,
-		}
-	    end
-    	},
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		dependencies = {
+			'hrsh7th/nvim-cmp',
+			'hrsh7th/cmp-nvim-lsp',
+		},
+		config = function()
+			local mason_lspconfig = require("mason-lspconfig")
+			mason_lspconfig.setup { ensure_installed = { "lua_ls" },
+				automatic_installations = true
+			}
+			-- Have mason start an lspconfig when attached to a buffer
+			mason_lspconfig.setup_handlers {
+				function(server_name)
+					local capabilities = vim.lsp.protocol.make_client_capabilities()
+					capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+					require('lspconfig')[server_name].setup {
+						capabilities = capabilities
+					}
+				end,
+			}
+		end
+	},
 
 	-- Displays the shortcut hint panel
 	{
 		"folke/which-key.nvim",
 		config = function()
 			local wk = require("which-key")
-			wk.setup()
+			wk.setup({
+				icons = {
+					group = ""
+				}
+			})
 			wk.register(
 				require("leonvim.keymaps"),
-				{ prefix = "<leader>"})
+				{ prefix = "<leader>" })
 		end
 	},
 
@@ -107,7 +189,7 @@ return {
 		end
 	},
 
-	-- Allows changing between tmux windows and nvim seamlessly 
+	-- Allows changing between tmux windows and nvim seamlessly
 	{
 		"aserowy/tmux.nvim",
 		config = function()
@@ -134,10 +216,10 @@ return {
 
 	-- Better statusline
 	{
-	   'nvim-lualine/lualine.nvim',
-	   config = function()
-		   require('lualine').setup()
-	   end
+		'nvim-lualine/lualine.nvim',
+		config = function()
+			require('lualine').setup()
+		end
 	},
 
 	{
@@ -177,4 +259,110 @@ return {
 	   end
 	}
 	-- ]]
+
+	-- Adds git markers to the gutter
+	{
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require('gitsigns').setup()
+		end
+	},
+
+	-- Adjusts indent settings for buffer automatically
+	{
+		'nmac427/guess-indent.nvim',
+		config = function()
+			require("guess-indent").setup {}
+		end
+	},
+
+	-- Adds color to hex codes
+	{
+		'NvChad/nvim-colorizer.lua',
+		config = function()
+			require("colorizer").setup()
+		end
+	},
+
+
+	-- Automatic insertion of parenthesis and brackets
+	{
+		"windwp/nvim-autopairs",
+		config = function()
+			require('nvim-autopairs').setup {}
+
+			------------------------------------
+			-- Have autopairs be treesitter aware
+			-------------------------------------
+			local npairs = require("nvim-autopairs")
+			local Rule = require('nvim-autopairs.rule')
+			npairs.setup({
+				check_ts = true,
+				ts_config = {
+					lua = { 'string' }, -- it will not add a pair on that treesitter node
+					javascript = { 'template_string' },
+					java = false, -- don't check treesitter on java
+				}
+			})
+			local ts_conds = require('nvim-autopairs.ts-conds')
+			-- press % => %% only while inside a comment or string
+			npairs.add_rules({
+				Rule("%", "%", "lua")
+				    :with_pair(ts_conds.is_ts_node({ 'string', 'comment' })),
+				Rule("$", "$", "lua")
+				    :with_pair(ts_conds.is_not_ts_node({ 'function' }))
+			})
+		end
+	},
+
+	-- Comment toggling
+	{
+		'numToStr/Comment.nvim',
+		config = function()
+			require("Comment").setup()
+		end
+	},
+
+	-- Shows line indents
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		config = function()
+			require("indent_blankline").setup {
+				show_current_context = true,
+				show_current_context_start = true,
+			}
+		end
+	},
+
+	-- Use jk to exit insert mode
+	{
+		"max397574/better-escape.nvim",
+		config = function()
+			require("better_escape").setup()
+		end,
+	},
+
+	-- Display code outline
+	{
+		'stevearc/aerial.nvim',
+		config = function() require('aerial').setup() end
+	},
+
+	-- Icon picker
+	{
+		"ziontee113/icon-picker.nvim",
+		config = function()
+			require("icon-picker").setup({
+				disable_legacy_commands = true
+			})
+		end,
+	},
+
+	-- Prettier UI prompts
+	{
+		'stevearc/dressing.nvim',
+		config = function ()
+			require("dressing").setup()
+		end
+	}
 }
