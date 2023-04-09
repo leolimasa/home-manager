@@ -31,21 +31,20 @@ in
     programs.neovim = {
     	enable = true;
     	viAlias = true;
-	vimAlias = true;
+	    vimAlias = true;
 
         plugins = with pkgs.vimPlugins; [
           vim-tmux-navigator
-          Coqtail
         ];
     };
 
-    home.file.".config/astronvim/lua/user/init.lua".text = builtins.readFile ./files/astronvim.lua;
-    home.file.".config/nvim".source = pkgs.fetchFromGitHub {
-       owner = "AstroNvim";
-       repo = "AstroNvim";
-       rev = "5bc711b";
-       sha256 = "kFY6FBS5jmpzRks62PKJbAG8/uaOdeFJMt6snBJkzJM=";
-    };
+    #home.file.".config/astronvim/lua/user/init.lua".text = builtins.readFile ./files/astronvim.lua;
+    #home.file.".config/nvim".source = pkgs.fetchFromGitHub {
+    #   owner = "NvChad";
+    #   repo = "NvChad";
+    #   rev = "bb87d70";
+    #   sha256 = "Z8UgxAKvC25EWT+6U3E8RjQIFNraDqlHCTcijt/2190=";
+    #};
   };
 
 }

@@ -3,7 +3,7 @@
   imports = [
     ./main.nix
     #./neovim2.nix
-    ./astronvim.nix
+    ./leonvim.nix
     ./tmux.nix
     ./kitty.nix
     ./zsh.nix
