@@ -63,16 +63,19 @@
 * [X] Increase / decrease split widths / heights with ctrl + arrow keys (smart-splits)
 * [X] On screen leader suggestions 
 * [ ] Format code on save
-* [ ] Run selection on terminal
+* [X] Run selection on terminal
 * [ ] Fuzzily search files
 * [X] Fuzzily search current buffer
 * [X] Tmux integration
-* [ ] Default options following previous vim config
+* [X] Default options following previous vim config
 * [X] Hide command bar
 * [X] Markdown support
 * [ ] Integrated cheat sheet
 * [ ] Launch lazygit from vim
 * [X] Pretty icons for nvim cmp
+* [ ] Lightbulb LSP (https://github.com/kosayoda/nvim-lightbulb)
+* [ ] Git blame support (vim-fugitive)
+* [ ] Switch neozoom to zen mode
 
 ## Commands
 

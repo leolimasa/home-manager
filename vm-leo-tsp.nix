@@ -2,7 +2,8 @@
 {
   imports = [
     ./main.nix
-    ./neovim2.nix
+    #./neovim2.nix
+    ./leonvim.nix
     ./tmux.nix
     ./zsh.nix
   ];
