@@ -13,7 +13,8 @@ return {
 		["el"] = "y<c-w><c-l>pa<cr>"
 	},
 	n = {
-		["<c-w>z"] = "<c-\\><c-n><cmd>NeoZoomToggle<cr>",
+		["<c-w>z"] = "<cmd>NeoZoomToggle<cr>",
+		["<c-w>b"] = "<cmd>botright new<cr>",
 	}
 }
 

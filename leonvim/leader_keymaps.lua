@@ -73,5 +73,6 @@ return {
 		name = " Terminal",
 		s = { "<c-w>s<c-w>j<cmd>terminal<cr><cmd>set norelativenumber<cr><cmd>set nonumber<cr>i", "New terminal split"},
 		v = { "<c-w>v<c-w>l<cmd>terminal<cr><cmd>set norelativenumber<cr><cmd>set nonumber<cr>i", "New terminal vertical"},
+		b = { "<cmd>bo new<cr><cmd>terminal<cr><cmd>set norelativenumber<cr><cmd>set nonumber<cr>i", "New terminal bottom"},
 	}
 }
