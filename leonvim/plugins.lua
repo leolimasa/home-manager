@@ -398,8 +398,11 @@ return {
 						height = 0.95,
 					},
 					-- NOTE: check :help nvim_open_win() for possible border values.
-					-- border = 'double',
+					border = 'rounded',
 				},
+				popup = {
+					enabled = false
+				}
 			}
 		end
 	}
