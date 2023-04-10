@@ -175,7 +175,7 @@ return {
 				}
 			})
 			wk.register(
-				require("leonvim.keymaps"),
+				require("leonvim.leader_keymaps"),
 				{ prefix = "<leader>" })
 		end
 	},
@@ -212,7 +212,7 @@ return {
 	-- Syntax highlighting
 	{
 		'nvim-treesitter/nvim-treesitter',
-		config = function ()
+		config = function()
 			require('nvim-treesitter.configs').setup {
 				ensure_installed = { "lua", "nix", "typescript" },
 				highlight = {
@@ -369,8 +369,38 @@ return {
 	-- Prettier UI prompts
 	{
 		'stevearc/dressing.nvim',
-		config = function ()
+		config = function()
 			require("dressing").setup()
+		end
+	},
+
+	-- Decent markdown support
+	{
+		'vimwiki/vimwiki'
+	},
+
+	-- Tab management
+	{
+		'nanozuki/tabby.nvim'
+	},
+
+	-- Zoom
+	{
+		'nyngwang/NeoZoom.lua',
+		config = function()
+			require("neo-zoom").setup {
+				winopts = {
+					offset = {
+						-- NOTE: you can omit `top` and/or `left` to center the floating window.
+						-- top = 0,
+						-- left = 0.17,
+						width = 0.95,
+						height = 0.95,
+					},
+					-- NOTE: check :help nvim_open_win() for possible border values.
+					-- border = 'double',
+				},
+			}
 		end
 	}
 }

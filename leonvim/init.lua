@@ -20,6 +20,15 @@ local function setup_plugins()
 	require("lazy").setup("leonvim.plugins")
 end
 
+local function setup_keymaps()
+	local maps = require("leonvim.keymaps")
+	for mode,mappings in pairs(maps) do
+		for key,mapping in pairs(mappings) do
+			vim.keymap.set(mode, key, mapping)
+		end
+	end
+end
+
 local function setup_ui()
 	-- Change the diagnostic sign for LSP
 	local signs = {
@@ -39,6 +48,7 @@ function m.init()
 	download_lazynvim()
 	setup_plugins()
 	setup_ui()
+	setup_keymaps()
 end
 
 return m

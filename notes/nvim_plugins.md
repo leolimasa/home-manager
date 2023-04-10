@@ -2,52 +2,52 @@
 
 ## Package 
 
-* x lazy.nvim
-* x mason
+* [X] lazy.nvim
+* [X] mason
 
 ## UI
 
-* x nvim-notify
-* x smart-splits
-* x nvim-web-devicons
-* bufdelete
-* x neo-tree
-* x heirline
-* x telescope.nvim
-* telescope-fzf-native.nvim
-* toggleterm
-* x which-key
-* x tmux terminal integration
+* [X] nvim-notify
+* [X] smart-splits
+* [X] nvim-web-devicons
+* [ ] bufdelete
+* [X] neo-tree
+* [X] heirline
+* [X] telescope.nvim
+* [ ] telescope-fzf-native.nvim
+* [ ] toggleterm
+* [X] which-key
+* [X] tmux terminal integration
 
 ## Treesitter
 
-* x nvim-treesiter
-* nvim-ts-autotag
-* nvim-ts-context-commentstring
+* [X] nvim-treesiter
+* [ ] nvim-ts-autotag
+* [ ] nvim-ts-context-commentstring
 
 ## Completion
 
-* x LuaSnip
-* x friendly-snippets
-* x nvim-cmp
-* x cmp_luasnip
-* x cmp-buffer
-* x cmp-path
+* [X] LuaSnip
+* [X] friendly-snippets
+* [X] nvim-cmp
+* [X] cmp_luasnip
+* [X] cmp-buffer
+* [X] cmp-path
 
 ## Editing
 
-* x guess-indent
-* x NvChad/nvim-colorizer
-* x nvim-autopairs
-* x Comment.nvim
-* x indent-blankline
-* x better_escape
+* [X] guess-indent
+* [X] NvChad/nvim-colorizer
+* [X] nvim-autopairs
+* [X] Comment.nvim
+* [X] indent-blankline
+* [X] better_escape
 
 ## LSP
 
-* x nvim-lspconfig
-* x mason-lspconfig
-* x aerial.nvim
+* [X] nvim-lspconfig
+* [X] mason-lspconfig
+* [X] aerial.nvim
 
 ## Debugging
 
@@ -56,23 +56,23 @@
 
 ## Git
 
-* x gitsigns.nvim
+* [X] gitsigns.nvim
 
 # Features
 
-* x Increase / decrease split widths / heights with ctrl + arrow keys (smart-splits)
-* x On screen leader suggestions 
-* Format code on save
-* Run selection on terminal
-* Fuzzily search files
-* x Fuzzily search current buffer
-* x Tmux integration
-* Default options following previous vim config
-* x Hide command bar
-* Markdown support
-* Integrated cheat sheet
-* Launch lazygit from vim
-* x Pretty icons for nvim cmp
+* [X] Increase / decrease split widths / heights with ctrl + arrow keys (smart-splits)
+* [X] On screen leader suggestions 
+* [ ] Format code on save
+* [ ] Run selection on terminal
+* [ ] Fuzzily search files
+* [X] Fuzzily search current buffer
+* [X] Tmux integration
+* [ ] Default options following previous vim config
+* [X] Hide command bar
+* [X] Markdown support
+* [ ] Integrated cheat sheet
+* [ ] Launch lazygit from vim
+* [X] Pretty icons for nvim cmp
 
 ## Commands
 
