@@ -76,6 +76,15 @@
 * [ ] Lightbulb LSP (https://github.com/kosayoda/nvim-lightbulb)
 * [ ] Git blame support (vim-fugitive)
 * [ ] Switch neozoom to zen mode
+* [ ] Scroll page up / down when cursor hits 1/3 of the page
+* [ ] Numbers keep disapearing / change line numbers to activate to old values when leaving terminal buffers
+* [ ] Disable which-key for visual mode
+* [ ] Allow renaming tabs
+* [ ] Better shortcut to quit insert mode for terminal
+* [ ] Shortcut for switching tabs in terminal mode (and other modes)
+* [ ] Automatically go to insert mode when focusing on terminal
+* [ ] Disable cmp for terminal buffers
+* [ ] Figure out how to change the curdir of the tree (just doing :e <dir> makes the buffers go wonky)
 
 ## Commands
 
