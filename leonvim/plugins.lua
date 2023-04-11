@@ -174,9 +174,13 @@ return {
 					group = ""
 				}
 			})
-			wk.register(
-				require("leonvim.leader_keymaps"),
-				{ prefix = "<leader>" })
+			for mode,mappings in pairs(require("leonvim.leader_keymaps")) do
+				for prefix,submappings in pairs(mappings) do
+					wk.register(
+						submappings,
+						{ prefix = prefix, mode = mode })
+				end
+			end
 		end
 	},
 
@@ -384,7 +388,19 @@ return {
 		'nanozuki/tabby.nvim'
 	},
 
+	{
+		'folke/zen-mode.nvim',
+		config = function()
+			require("zen-mode").setup {
+				window = {
+					width = 0.90
+				}
+			}
+		end
+	}
+
 	-- Zoom
+	--[[
 	{
 		'nyngwang/NeoZoom.lua',
 		config = function()
@@ -406,4 +422,5 @@ return {
 			}
 		end
 	}
+	--]]
 }

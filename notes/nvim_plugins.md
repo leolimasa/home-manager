@@ -75,7 +75,7 @@
 * [X] Pretty icons for nvim cmp
 * [ ] Lightbulb LSP (https://github.com/kosayoda/nvim-lightbulb)
 * [ ] Git blame support (vim-fugitive)
-* [ ] Switch neozoom to zen mode
+* [X] Switch neozoom to zen mode
 * [ ] Scroll page up / down when cursor hits 1/3 of the page
 * [ ] Numbers keep disapearing / change line numbers to activate to old values when leaving terminal buffers
 * [ ] Disable which-key for visual mode

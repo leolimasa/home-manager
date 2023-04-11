@@ -9,7 +9,7 @@ function m.setup()
 
 	-- Faster timeout
 	vim.o.timeout = true
-	vim.o.timeoutlen = 250
+	vim.o.timeoutlen = 250 
 
 	-- Only show command bar when active
 	vim.o.cmdheight = 0
