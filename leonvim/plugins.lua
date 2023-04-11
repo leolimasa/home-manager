@@ -243,6 +243,7 @@ return {
 	},
 
 	-- Left side folder explorer
+	--[[
 	{
 		"nvim-tree/nvim-tree.lua",
 		config = function()
@@ -397,6 +398,11 @@ return {
 				}
 			}
 		end
+	},
+
+	-- Fuzzy search in files
+	{
+		'ibhagwan/fzf-lua'
 	}
 
 	-- Zoom

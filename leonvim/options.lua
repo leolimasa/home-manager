@@ -30,12 +30,14 @@ function m.setup()
 	vim.o.clipboard = 'unnamedplus'
 
 	-- Disable netrw, since we use a file explorer
-	vim.g.loaded_netrw = 1
-	vim.g.loaded_netrwPlugin = 1
+	-- vim.g.loaded_netrw = 1
+	-- vim.g.loaded_netrwPlugin = 1
+	vim.g.netrw_liststyle = 3
 
 	-- Set leader to space
 	vim.g.mapleader = " "
 	vim.g.localmapleader = " "
+
 
 	-- Save more session stuff
 	vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winpos,winsize,terminal,options,localoptions"

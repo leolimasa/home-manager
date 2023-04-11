@@ -38,6 +38,7 @@ return {
 				f = { function() require("telescope.builtin").find_files() end, "Files" },
 				b = { function() require("telescope.builtin").buffers() end, "Buffers" },
 				m = { function() require("telescope.marks").marks() end, "Marks" },
+				c = { require("fzf-lua").grep_project, "In file Contents"},
 			},
 			c = {
 				name = " Code",
@@ -84,9 +85,9 @@ return {
 			},
 			t = {
 				name = " Terminal",
-				s = { "<c-w>s<c-w>j<cmd>terminal<cr><cmd>set norelativenumber<cr><cmd>set nonumber<cr>i", "New terminal split"},
-				v = { "<c-w>v<c-w>l<cmd>terminal<cr><cmd>set norelativenumber<cr><cmd>set nonumber<cr>i", "New terminal vertical"},
-				b = { "<cmd>bo new<cr><cmd>terminal<cr><cmd>set norelativenumber<cr><cmd>set nonumber<cr>i", "New terminal bottom"},
+				s = { "<c-w>s<c-w>j<cmd>terminal<cr>i", "New terminal split"},
+				v = { "<c-w>v<c-w>l<cmd>terminal<cr>i", "New terminal vertical"},
+				b = { "<cmd>bo new<cr><cmd>terminal<cr>i", "New terminal bottom"},
 			}
 		}
 	}

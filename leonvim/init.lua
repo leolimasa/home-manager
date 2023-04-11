@@ -43,12 +43,17 @@ local function setup_ui()
 	end
 end
 
+local function setup_terminal()
+	vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
+end
+
 function m.init()
 	opts.setup()
 	download_lazynvim()
 	setup_plugins()
 	setup_ui()
 	setup_keymaps()
+	setup_terminal()
 end
 
 return m

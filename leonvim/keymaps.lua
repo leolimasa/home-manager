@@ -5,6 +5,7 @@ return {
 		["<c-k>"] = "<c-\\><c-n><c-w>k",
 		["<c-l>"] = "<c-\\><c-n><c-w>l",
 		["<c-w>z"] = "<c-\\><c-n><cmd>ZenMode<cr>",
+		["<Esc>"] = "<c-\\><c-n>"
 	},
 	n = {
 		["<c-w>z"] = "<cmd>ZenMode<cr>",
