@@ -84,7 +84,8 @@
 * [ ] Shortcut for switching tabs in terminal mode (and other modes)
 * [X] Automatically go to insert mode when focusing on terminal
 * [ ] Disable cmp for terminal buffers
-* [ ] Figure out how to change the curdir of the tree (just doing :e <dir> makes the buffers go wonky)
+* [X] Figure out how to change the curdir of the tree (just doing :e <dir> makes the buffers go wonky)
+* [ ] Show all LSP warnings in a popup window
 
 ## Commands
 
@@ -97,3 +98,4 @@ gco = insert comment on next line
 gcO = insert comment on previous line
 gcA = insert comment on end of current line
 jk or jj = exit insert mode
+c-w J = move window to very bottom

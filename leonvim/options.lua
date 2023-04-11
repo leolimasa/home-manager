@@ -38,7 +38,6 @@ function m.setup()
 	vim.g.mapleader = " "
 	vim.g.localmapleader = " "
 
-
 	-- Save more session stuff
 	vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winpos,winsize,terminal,options,localoptions"
 end
