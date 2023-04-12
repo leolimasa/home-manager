@@ -26,31 +26,35 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local lsp_symbols = {
-				Text = "   (Text) ",
-				Method = "   (Method)",
-				Function = "   (Function)",
-				Constructor = "   (Constructor)",
-				Field = " ﴲ  (Field)",
-				Variable = "[] (Variable)",
-				Class = "   (Class)",
-				Interface = " ﰮ  (Interface)",
-				Module = "   (Module)",
-				Property = " 襁 (Property)",
-				Unit = "   (Unit)",
-				Value = "   (Value)",
-				Enum = " 練 (Enum)",
-				Keyword = "   (Keyword)",
-				Snippet = "   (Snippet)",
-				Color = "   (Color)",
-				File = "   (File)",
-				Reference = "   (Reference)",
-				Folder = "   (Folder)",
-				EnumMember = "   (EnumMember)",
-				Constant = " ﲀ  (Constant)",
-				Struct = " ﳤ  (Struct)",
-				Event = "   (Event)",
-				Operator = "   (Operator)",
-				TypeParameter = "   (TypeParameter)",
+				Text = "   Text",
+				Method = "   Method",
+				Function = "   Function",
+				Constructor = "   Constructor",
+				Field = " ﴲ  Field",
+				Variable = "[] Variable",
+				Class = "   Class",
+				Interface = " ﰮ  Interface",
+				Module = "   Module",
+				Property = " 襁 Property",
+				Unit = "   Unit",
+				Value = "   Value",
+				Enum = " 練 Enum",
+				Keyword = "   Keyword",
+				Snippet = "   Snippet",
+				Color = "   Color",
+				File = "   File",
+				Reference = "   Reference",
+				Folder = "   Folder",
+				EnumMember = "   EnumMember",
+				Constant = " ﲀ  Constant",
+				Struct = " ﳤ  Struct",
+				Event = "   Event",
+				Operator = "   Operator",
+				TypeParameter = "   TypeParameter",
+			}
+			local border_opts = {
+				border = "single",
+				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
 			}
 			cmp.setup({
 				snippet = {
@@ -58,6 +62,10 @@ return {
 						-- require('luasnip').lsp_expand(args.body)
 						vim.fn["vsnip#anonymous"](args.body)
 					end,
+				},
+				window = {
+					completion = cmp.config.window.bordered(border_opts),
+					documentation = cmp.config.window.bordered(border_opts),
 				},
 				sources = {
 					{ name = 'nvim_lsp' },
@@ -443,15 +451,22 @@ return {
 	},
 
 	{
+		"dhruvasagar/vim-zoom"
+	},
+
+	--[[
+	{
 		'folke/zen-mode.nvim',
 		config = function()
 			require("zen-mode").setup {
 				window = {
-					width = 0.90
+					width = 1,
+					height = 1
 				}
 			}
 		end
 	},
+	--]]
 
 	-- Fuzzy search in files
 	{
