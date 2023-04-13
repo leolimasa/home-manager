@@ -1,5 +1,8 @@
 -- Specifies leader key shortcuts
 -- See https://github.com/folke/which-key.nvim for format
+
+local win = require("leonvim.window")
+
 return {
 	v = {
 		["<leader>"] = {
@@ -111,8 +114,17 @@ return {
 							end
 						end)
 				    end,
-				    "Rename current tab"}
+				    "Rename current tab"},
+				d = { "<cmd>tabclose<cr>", "Close tab"}
+			},
+			w = {
+				name = "  Window",
+				y = { function() win.yank() end, "Yanks a window"},
+				p = { function() win.paste() end, "Pastes a yanked window into the current window"},
+				s = { function() win.swap() end, "Swaps the current window with the yanked window" },
+				z = { function() win.zoom() end, "Zooms the current window in a new tab" },
 			}
+
 		}
 	}
 }
