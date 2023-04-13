@@ -3,15 +3,19 @@
 
 local win = require("leonvim.window")
 
+local function yank_to_window(pos)
+	return "y<c-w><c-" .. pos .. "><cmd>stopinsert<cr>gpi<cr>"
+end
+
 return {
 	v = {
 		["<leader>"] = {
 			y = {
 				name = "Yank to window",
-				h = { "y<c-w><c-h>pa<cr>", "Left" },
-				j = { "y<c-w><c-j>pa<cr>", "Down" },
-				k = { "y<c-w><c-k>pa<cr>", "Up" },
-				l = { "y<c-w><c-l>pa<cr>", "Right" },
+				h = { yank_to_window("h") , "Left" },
+				j = { yank_to_window("j"), "Down" },
+				k = { yank_to_window("k"), "Up" },
+				l = { yank_to_window("l"), "Right" },
 			},
 		}
 	},
