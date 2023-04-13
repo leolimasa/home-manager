@@ -24,7 +24,7 @@ return {
 			["/"] = { function() require("telescope.builtin").current_buffer_fuzzy_find() end,
 				"Fuzzy find on current buffer" },
 			-- o = { "<cmd>NvimTreeFocus<cr>", "Open and go to explorer" },
-			-- e = { "<cmd>NvimTreeToggle<cr>", "Toggle explorer" },
+			e = { "<cmd>CHADopen<cr>", "Toggle explorer" },
 			n = { "<cmd>IconPickerNormal<cr>", "Icon picker" },
 			z = { "<cmd>ZenMode<cr>", "Zoom window" },
 			p = {

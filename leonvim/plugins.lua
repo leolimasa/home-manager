@@ -290,14 +290,6 @@ return {
 	},
 
 	-- Adjusts indent settings for buffer automatically
-	--[[
-	{
-		'nmac427/guess-indent.nvim',
-		config = function()
-			require("guess-indent").setup {}
-		end
-	},
-	]] --
 	{
 		'tpope/vim-sleuth'
 	},
@@ -450,47 +442,13 @@ return {
 		end
 	},
 
-	--[[
-	{
-		'folke/zen-mode.nvim',
-		config = function()
-			require("zen-mode").setup {
-				window = {
-					width = 1,
-					height = 1
-				}
-			}
-		end
-	},
-	--]]
-
 	-- Fuzzy search in files
 	{
 		'ibhagwan/fzf-lua'
-	}
+	},
 
-	-- Zoom
-	--[[
 	{
-		'nyngwang/NeoZoom.lua',
-		config = function()
-			require("neo-zoom").setup {
-				winopts = {
-					offset = {
-						-- NOTE: you can omit `top` and/or `left` to center the floating window.
-						-- top = 0,
-						-- left = 0.17,
-						width = 0.95,
-						height = 0.95,
-					},
-					-- NOTE: check :help nvim_open_win() for possible border values.
-					border = 'rounded',
-				},
-				popup = {
-					enabled = false
-				}
-			}
-		end
+		'ms-jpq/chadtree',
+		build = "python3 -m chadtree deps"
 	}
-	--]]
 }
