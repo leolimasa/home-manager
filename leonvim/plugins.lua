@@ -450,10 +450,6 @@ return {
 		end
 	},
 
-	{
-		"dhruvasagar/vim-zoom"
-	},
-
 	--[[
 	{
 		'folke/zen-mode.nvim',
