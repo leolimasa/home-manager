@@ -65,6 +65,8 @@ local function setup_terminal()
 	vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
 end
 
+Cur_config = {}
+
 function m.init(extra_plugins)
 	opts.setup()
 	download_lazynvim()
@@ -72,6 +74,15 @@ function m.init(extra_plugins)
 	setup_ui()
 	setup_keymaps()
 	setup_terminal()
+	Cur_config = { extra_plugins = extra_plugins}
+end
+
+function m.reload_keymaps()
+	package.loaded["leonvim.keymaps"] = nil
+	package.loaded["leonvim.leader_keymaps"] = nil
+	package.loaded["leonvim.plugins.whichkey"] = nil
+	require("leonvim.plugins.which-key")()
+	setup_keymaps()
 end
 
 return m

@@ -47,14 +47,7 @@ return function()
 			{ name = 'vsnip' },
 			{ name = 'path' },
 			-- Autocomplete using all buffers
-			{
-				name = 'buffer',
-				option = {
-					get_bufnrs = function()
-						return vim.api.nvim_list_bufs()
-					end
-				}
-			}
+			{ name = 'buffer' }
 		},
 		formatting = {
 			format = function(entry, item)
