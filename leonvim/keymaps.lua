@@ -17,8 +17,8 @@ return {
 
 	},
 	n = {
-		["<c-w>z"] = "<cmd>ZenMode<cr>",
 		["<c-w>b"] = "<cmd>botright new<cr>",
+		["<c-w>z"] = win.zoom,
 	}
 }
 
