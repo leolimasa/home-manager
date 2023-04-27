@@ -23,8 +23,7 @@ return {
 		["<leader>"] = {
 			["/"] = { function() require("telescope.builtin").current_buffer_fuzzy_find() end,
 				"Fuzzy find on current buffer" },
-			-- o = { "<cmd>NvimTreeFocus<cr>", "Open and go to explorer" },
-			e = { "<cmd>CHADopen<cr>", "Toggle explorer" },
+			o = { "<cmd>Neotree float toggle<cr>", "Open file" },
 			n = { "<cmd>IconPickerNormal<cr>", "Icon picker" },
 			z = { "<cmd>ZenMode<cr>", "Zoom window" },
 			p = {
@@ -98,13 +97,13 @@ return {
 				n = { function() require("telescope").extensions.notify.notify() end,
 					"View VIM notifications history" }
 			},
-			t = {
+			r = {
 				name = " Terminal",
 				s = { "<c-w>s<c-w>j<cmd>terminal<cr>i", "New terminal split" },
 				v = { "<c-w>v<c-w>l<cmd>terminal<cr>i", "New terminal vertical" },
 				b = { "<cmd>bo new<cr><cmd>terminal<cr>i", "New terminal bottom" },
 			},
-			a = {
+			t = {
 				name = "裡Tabs",
 				l = { "gt", "Next tab"},
 				h = { "gT", "Previous tab"},
