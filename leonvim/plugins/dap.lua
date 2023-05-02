@@ -1,21 +1,23 @@
+GoLastCustomFile = ""
+
 return function()
 	local dap = require("dap")
-	-- dap.adapters.delve = {
-	-- 	type = 'server',
-	-- 	port = '${port}',
-	-- 	executable = {
-	-- 		command = 'dlv',
-	-- 		args = { 'dap', '-l', '127.0.0.1:${port}' },
-	-- 	}
-	-- }
-	--
-	-- For go, start it with 
-	-- dlv dap -l 127.0.0.1:38697 --log --log-output="dap"
 	dap.adapters.delve = {
-		type = "server",
-		host = "127.0.0.1",
-		port = 38697,
+		type = 'server',
+		port = '${port}',
+		executable = {
+			command = 'dlv',
+			args = { 'dap', '-l', '127.0.0.1:${port}', '--log', '--log-output="dap"' },
+		}
 	}
+	--
+	-- start it with 
+	-- dlv dap -l 127.0.0.1:38697 --log --log-output="dap"
+	-- dap.adapters.delve = {
+	-- 	type = "server",
+	-- 	host = "127.0.0.1",
+	-- 	port = 38697,
+	-- }
 
 	dap.configurations.go = {
 		{
@@ -48,10 +50,21 @@ return function()
 		},
 		{
 			type = "delve",
-			name = "Debug mdm test",
+			name = "Debug custom test",
 			request = "launch",
 			mode = "test",
-			program = "code.transportant.us/attendant/mdm/bundle"
+			program = function ()
+				return coroutine.create(function(dap_run_co)
+					vim.ui.input(
+						{ prompt = "File or argument name",
+						  default = GoLastCustomFile },
+						function(program)
+							GoLastCustomFile = program
+							coroutine.resume(dap_run_co, program)
+						end
+					)
+				end)
+			end
 		},
 	}
 
