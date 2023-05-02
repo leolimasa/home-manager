@@ -12,7 +12,7 @@ return {
 		["<leader>"] = {
 			y = {
 				name = "Yank to window",
-				h = { yank_to_window("h") , "Left" },
+				h = { yank_to_window("h"), "Left" },
 				j = { yank_to_window("j"), "Down" },
 				k = { yank_to_window("k"), "Up" },
 				l = { yank_to_window("l"), "Right" },
@@ -95,7 +95,19 @@ return {
 			d = {
 				name = " Debug",
 				n = { function() require("telescope").extensions.notify.notify() end,
-					"View VIM notifications history" }
+					"View VIM notifications history" },
+				b = { function() require 'dap'.toggle_breakpoint() end,
+					"Toggle breakpoint" },
+				c = { function() require 'dap'.continue() end,
+					"Start or continue debugging session" },
+				o = { function() require 'dap'.step_over() end,
+					"Step over" },
+				i = { function() require 'dap'.step_over() end,
+					"Step into" },
+				s = { function() require 'dap'.repl.open() end,
+					"Debugger state" },
+				u = { function() require("dapui").toggle() end,
+					"Toggle UI" }
 			},
 			r = {
 				name = " Terminal",
@@ -105,35 +117,35 @@ return {
 			},
 			t = {
 				name = "裡Tabs",
-				l = { "gt", "Next tab"},
-				h = { "gT", "Previous tab"},
-				n = { "<cmd>tabnew<cr>", "New tab"},
-				r = { function ()
+				l = { "gt", "Next tab" },
+				h = { "gT", "Previous tab" },
+				n = { "<cmd>tabnew<cr>", "New tab" },
+				r = { function()
 					vim.ui.input(
-						{ prompt = "Tab name"},
+						{ prompt = "Tab name" },
 						function(tabname)
-						if tabname and tabname ~= "" then
+							if tabname and tabname ~= "" then
 								vim.cmd("TabRename " .. tabname)
 							end
 						end)
-				    end,
-				    "Rename current tab"},
-				d = { "<cmd>tabclose<cr>", "Close tab"}
+				end,
+					"Rename current tab" },
+				d = { "<cmd>tabclose<cr>", "Close tab" }
 			},
 			w = {
 				name = "缾Window",
-				y = { function() win.yank() end, "Yanks a window"},
-				p = { function() win.paste() end, "Pastes a yanked window into the current window"},
+				y = { function() win.yank() end, "Yanks a window" },
+				p = { function() win.paste() end, "Pastes a yanked window into the current window" },
 				s = { function() win.swap() end, "Swaps the current window with the yanked window" },
 				z = { function() win.zoom() end, "Zooms the current window in a new tab" },
 				j = { "<c-w>=<c-w>j", "Equalize windows and move down" },
 				k = { "<c-w>=<c-w>k", "Equalize windows and move up" },
-				m = { "<c-w>_", "Maximize height"},
-				w = { "<c-w>|", "Maximize width"}
+				m = { "<c-w>_", "Maximize height" },
+				w = { "<c-w>|", "Maximize width" }
 			},
 			s = {
 				name = "漣Settings",
-				k = { function() require("leonvim.init").reload_keymaps() end, "Reload keymaps"},
+				k = { function() require("leonvim.init").reload_keymaps() end, "Reload keymaps" },
 			}
 
 		}
