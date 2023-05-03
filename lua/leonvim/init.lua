@@ -36,6 +36,7 @@ local function setup_plugins(extra_plugins)
 		table.insert(lazy_plugins, v)
 	end
 	require("lazy").setup(lazy_plugins)
+	require("leonvim.plugins.auto_expand").setup()
 end
 
 local function setup_keymaps()
@@ -62,7 +63,15 @@ local function setup_ui()
 end
 
 local function setup_terminal()
-	vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
+	-- vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert")
+	vim.api.nvim_create_autocmd(
+		{ "BufWinEnter", "WinEnter"}, {
+			pattern = "term://*",
+			callback = function (ev)
+				vim.cmd("startinsert")
+			end
+		}
+	)
 end
 
 Cur_config = {}
