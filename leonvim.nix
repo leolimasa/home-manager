@@ -40,7 +40,7 @@ in
 
     #home.file.".config/nvim/coc-settings.json".text = builtins.readFile ./files/coc-settings.json;
     #home.file.".config/nvim/init.lua".text = builtins.readFile ./files/init.lua;
-    home.file.".config/nvim/lua/leonvim".source = config.lib.file.mkOutOfStoreSymlink ./leonvim;
+    home.file.".config/nvim/lua/leonvim".source = config.lib.file.mkOutOfStoreSymlink ./lua/leonvim;
   };
 
 }

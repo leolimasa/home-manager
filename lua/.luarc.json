@@ -1,0 +1,8 @@
+{
+    "workspace.library": [
+        "/home/leo/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "/nix/store/14jfb67y2ij0q91xf9qcxkf37rbnxnpb-neovim-unwrapped-0.8.3/share/nvim/runtime/lua",
+        "/home/leo/pr/personal/home-manager/lua",
+        "${3rd}/luv/library"
+    ]
+}
