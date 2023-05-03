@@ -93,5 +93,10 @@ function m.zoom()
 	end
 end
 
+function m.maximize()
+	vim.api.nvim_input("<c-w>_")
+	vim.api.nvim_input("<c-w>|")
+end
+
 
 return m
