@@ -43,7 +43,7 @@ local function setup_keymaps()
 	local maps = require("leonvim.keymaps")
 	for mode, mappings in pairs(maps) do
 		for key, mapping in pairs(mappings) do
-			vim.keymap.set(mode, key, mapping)
+			vim.keymap.set(mode, key, mapping[1], mapping[2])
 		end
 	end
 end

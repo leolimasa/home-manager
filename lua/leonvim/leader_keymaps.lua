@@ -134,17 +134,17 @@ return {
 					"Rename current tab" },
 				d = { "<cmd>tabclose<cr>", "Close tab" }
 			},
-			w = {
-				name = "缾Window",
-				y = { function() win.yank() end, "Yanks a window" },
-				p = { function() win.paste() end, "Pastes a yanked window into the current window" },
-				s = { function() win.swap() end, "Swaps the current window with the yanked window" },
-				z = { function() win.zoom() end, "Zooms the current window in a new tab" },
-				j = { "<c-w>=<c-w>j", "Equalize windows and move down" },
-				k = { "<c-w>=<c-w>k", "Equalize windows and move up" },
-				m = { "<c-w>_", "Maximize height" },
-				w = { "<c-w>|", "Maximize width" }
-			},
+			-- w = {
+			-- 	name = "缾Window",
+			-- 	y = { function() win.yank() end, "Yanks a window" },
+			-- 	p = { function() win.paste() end, "Pastes a yanked window into the current window" },
+			-- 	s = { function() win.swap() end, "Swaps the current window with the yanked window" },
+			-- 	z = { function() win.zoom() end, "Zooms the current window in a new tab" },
+			-- 	j = { "<c-w>=<c-w>j", "Equalize windows and move down" },
+			-- 	k = { "<c-w>=<c-w>k", "Equalize windows and move up" },
+			-- 	m = { "<c-w>_", "Maximize height" },
+			-- 	w = { "<c-w>|", "Maximize width" }
+			-- },
 			s = {
 				name = "漣Settings",
 				k = { function() require("leonvim.init").reload_keymaps() end, "Reload keymaps" },
