@@ -165,10 +165,8 @@ return {
 	},
 	-- Fuzzy search in files
 	["ibhagwan/fzf-lua"] = {},
+
 	-- File explorer
-	-- ["ms-jpq/chadtree"] = {
-	-- 	build = "python3 -m chadtree deps"
-	-- }
 	["nvim-neo-tree/neo-tree.nvim"] = {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -185,15 +183,11 @@ return {
 			})
 		end
 	},
+
+	-- Debugging support
 	["mfussenegger/nvim-dap"] = {
 		config = require("leonvim.config.dap")
 	},
-	-- Golang debugger for dap
-	-- ["leoluz/nvim-dap-go"] = {
-	-- 	config = function ()
-	-- 		require('dap-go').setup()
-	-- 	end
-	-- },
 
 	-- Pretty interface for dap
 	["rcarriga/nvim-dap-ui"] = {
