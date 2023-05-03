@@ -58,6 +58,8 @@ return {
 		lazy = false,
 		config = function()
 			vim.cmd([[colorscheme onedark]])
+			-- Correct some highlights
+			vim.api.nvim_command("highlight NeoTreeFloatBorder guifg=#5c6370 guibg=#282c34")
 		end
 	},
 	-- Allows changing between tmux windows and nvim seamlessly
