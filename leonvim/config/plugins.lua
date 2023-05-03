@@ -17,7 +17,7 @@ return {
 			'hrsh7th/cmp-vsnip',
 			'windwp/nvim-autopairs'
 		},
-		config = require("leonvim.plugins.cmp")
+		config = require("leonvim.config.cmp")
 	},
 	-- Provides pre-made configuration for LSP servers and ensures it attaches to the buffer.
 	-- This will NOT auto setup an LSP client. For that, see mason-lspconfig.
@@ -38,11 +38,11 @@ return {
 			'hrsh7th/nvim-cmp',
 			'hrsh7th/cmp-nvim-lsp',
 		},
-		config = require("leonvim.plugins.mason")
+		config = require("leonvim.config.mason")
 	},
 	-- Displays the shortcut hint panel
 	["folke/which-key.nvim"] = {
-		config = require("leonvim.plugins.which-key")
+		config = require("leonvim.config.which-key")
 	},
 	-- The onedark theme
 	["navarasu/onedark.nvim"] = {
@@ -105,7 +105,7 @@ return {
 	},
 	-- Automatic insertion of parenthesis and brackets
 	["windwp/nvim-autopairs"] = {
-		config = require("leonvim.plugins.autopairs")
+		config = require("leonvim.config.autopairs")
 	},
 	-- Comment toggling
 	['numToStr/Comment.nvim'] = {
@@ -150,7 +150,7 @@ return {
 	["vimwiki/vimwiki"] = {},
 	-- Tab management
 	["nanozuki/tabby.nvim"] = {
-		config = require("leonvim.plugins.tabby")
+		config = require("leonvim.config.tabby")
 	},
 	-- Fuzzy search in files
 	["ibhagwan/fzf-lua"] = {},
@@ -175,7 +175,7 @@ return {
 		end
 	},
 	["mfussenegger/nvim-dap"] = {
-		config = require("leonvim.plugins.dap")
+		config = require("leonvim.config.dap")
 	},
 	-- Golang debugger for dap
 	-- ["leoluz/nvim-dap-go"] = {

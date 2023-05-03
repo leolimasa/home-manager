@@ -28,7 +28,7 @@ local function setup_plugins(extra_plugins)
 	if extra_plugins == nil then
 		extra_plugins = {}
 	end
-	local plugins = require("leonvim.plugins.config")
+	local plugins = require("leonvim.config.plugins")
 	plugins = merge_tables(plugins, extra_plugins)
 	local lazy_plugins = {}
 	for k,v in pairs(plugins) do
@@ -80,8 +80,8 @@ end
 function m.reload_keymaps()
 	package.loaded["leonvim.keymaps"] = nil
 	package.loaded["leonvim.leader_keymaps"] = nil
-	package.loaded["leonvim.plugins.whichkey"] = nil
-	require("leonvim.plugins.which-key")()
+	package.loaded["leonvim.config.whichkey"] = nil
+	require("leonvim.config.which-key")()
 	setup_keymaps()
 end
 
