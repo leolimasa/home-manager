@@ -24,7 +24,9 @@ return {
 	n = {
 		["<c-w>b"] = "<cmd>botright new<cr>",
 		["<c-w>z"] = win.zoom,
-		["<c-w>m"] = win.maximize
+		["<c-w>m"] = win.maximize,
+		["<c-w>y"] = win.yank,
+		["<c-w>p"] = win.paste
 	}
 }
 
