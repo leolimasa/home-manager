@@ -70,7 +70,8 @@ return {
 					"List functions and variables (Treesitter)" },
 				f = { function() vim.lsp.buf.format() end, "Format" },
 				o = { "<cmd>AerialToggle right<cr>", "Outline" },
-				k = { function() vim.lsp.buf.hover() end, "Hover documentation" }
+				k = { function() vim.lsp.buf.hover() end, "Hover documentation" },
+				e = { function() vim.diagnostic.open_float() end, "Open diagnostics in a floating window"}
 			},
 			g = {
 				name = "↪ Go to",
