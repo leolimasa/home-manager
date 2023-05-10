@@ -43,6 +43,10 @@
       #export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
       #gpg-connect-agent updatestartuptty /bye > /dev/null
       export DEFAULT_SHELL=$(which zsh)
+      # Local zsh config
+      if [ -f "~/.config/zsh" ]; then
+        source "~/.config/zsh"
+      fi
       '';
 
       oh-my-zsh = {
