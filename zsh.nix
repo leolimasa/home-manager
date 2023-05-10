@@ -44,8 +44,8 @@
       #gpg-connect-agent updatestartuptty /bye > /dev/null
       export DEFAULT_SHELL=$(which zsh)
       # Local zsh config
-      if [ -f "~/.config/zsh" ]; then
-        source "~/.config/zsh"
+      if [ -f "$HOME/.config/zsh" ]; then
+        source "$HOME/.config/zsh"
       fi
       '';
 
