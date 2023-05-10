@@ -23,6 +23,14 @@ return {
 		["<leader>"] = {
 			["/"] = { function() require("telescope.builtin").current_buffer_fuzzy_find() end,
 				"Fuzzy find on current buffer" },
+			a = {
+				name = "擄ChatGPT",
+				o = {"<cmd>ChatGPT<cr>", "Open"},
+				a = {"<cmd>ChatGPTActAs<cr>", "Act as"},
+				c = {"<cmd>ChatGPTCompleteCode<cr>", "Complete code"},
+				e = {"<cmd>ChatGPTEditWithInstructions<cr>", "Edit with instructions"},
+				r = {"<cmd>ChatGPTRun<cr>", "Run"},
+			},
 			o = { "<cmd>Neotree float toggle dir=%:h<cr>", "Open file" },
 			n = { "<cmd>IconPickerNormal<cr>", "Icon picker" },
 			z = { "<cmd>ZenMode<cr>", "Zoom window" },

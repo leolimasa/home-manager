@@ -212,10 +212,23 @@ return {
 	["folke/trouble.nvim"] = {
 		config = function()
 			require("trouble").setup {
+				shit
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
 			}
 		end
+	},
+	-- ChatGPT
+	["jackMort/ChatGPT.nvim"] = {
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup()
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
 	}
 }
