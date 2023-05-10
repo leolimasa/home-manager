@@ -60,6 +60,9 @@ return {
 			vim.cmd([[colorscheme onedark]])
 			-- Correct some highlights
 			vim.api.nvim_command("highlight NeoTreeFloatBorder guifg=#5c6370 guibg=#282c34")
+			vim.api.nvim_command("highlight IlluminatedWordWrite guibg=#31353f")
+			vim.api.nvim_command("highlight IlluminatedWordText guibg=#31353f")
+			vim.api.nvim_command("highlight IlluminatedWordRead guibg=#31353f")
 		end
 	},
 	-- Allows changing between tmux windows and nvim seamlessly
@@ -165,7 +168,6 @@ return {
 	},
 	-- Fuzzy search in files
 	["ibhagwan/fzf-lua"] = {},
-
 	-- File explorer
 	["nvim-neo-tree/neo-tree.nvim"] = {
 		dependencies = {
@@ -183,12 +185,10 @@ return {
 			})
 		end
 	},
-
 	-- Debugging support
 	["mfussenegger/nvim-dap"] = {
 		config = require("leonvim.config.dap")
 	},
-
 	-- Pretty interface for dap
 	["rcarriga/nvim-dap-ui"] = {
 		dependencies = { "mfussenegger/nvim-dap" },
@@ -206,4 +206,16 @@ return {
 			end
 		end
 	},
+	-- Highlight word under cursor
+	["RRethy/vim-illuminate"] = {},
+	-- Prettier LSP diagnostics
+	["folke/trouble.nvim"] = {
+		config = function()
+			require("trouble").setup {
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			}
+		end
+	}
 }

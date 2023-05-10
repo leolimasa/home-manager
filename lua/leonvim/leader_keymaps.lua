@@ -55,7 +55,6 @@ return {
 				c = { "<Plug>(comment_toggle_linewise_current)", "Comment current line [gcc]" },
 				g = { function() require("telescope.builtin").spell_suggest() end,
 					"Suggest Spelling" },
-				h = { function() require("telescope.builtin").highlights() end, "Highlights" },
 				i = { function() require("telescope.builtin").lsp_incoming_calls() end,
 					"Incoming calls (LSP)" },
 				t = { function() require("telescope.builtin").lsp_outgoing_calls() end,
@@ -64,14 +63,15 @@ return {
 					"Document symbols (LSP)" },
 				w = { function() require("telescope.builtin").lsp_dynamic_workspace_symbols() end,
 					"Workspace symbols (LSP)" },
-				d = { function() require("telescope.builtin").diagnostics() end,
-					"Diagnostics (LSP)" },
+				-- d = { function() require("telescope.builtin").diagnostics() end,
+				-- 	"Diagnostics (LSP)" },
+				 d = { "<cmd>TroubleToggle<cr>", "Diagnostics (LSP)" },
 				l = { function() require("telescope.builtin").treesitter() end,
 					"List functions and variables (Treesitter)" },
 				f = { function() vim.lsp.buf.format() end, "Format" },
 				o = { "<cmd>AerialToggle right<cr>", "Outline" },
 				k = { function() vim.lsp.buf.hover() end, "Hover documentation" },
-				e = { function() vim.diagnostic.open_float() end, "Open diagnostics in a floating window"}
+				e = { function() vim.diagnostic.open_float() end, "Current line diagnostics"}
 			},
 			g = {
 				name = "↪ Go to",
@@ -149,6 +149,7 @@ return {
 			s = {
 				name = "漣Settings",
 				k = { function() require("leonvim.init").reload_keymaps() end, "Reload keymaps" },
+				h = { function() require("telescope.builtin").highlights() end, "Show highlight groups" },
 			}
 
 		}
