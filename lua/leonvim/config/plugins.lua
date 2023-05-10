@@ -219,16 +219,10 @@ return {
 		end
 	},
 	-- ChatGPT
-	["jackMort/ChatGPT.nvim"] = {
-		event = "VeryLazy",
-		config = function()
-			require("chatgpt").setup()
-		end,
-		requires = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim"
-		}
+	["Bryley/neoai.nvim"] = {
+		config = function ()
+			require("neoai").setup()
+		end
 	}
 }
 

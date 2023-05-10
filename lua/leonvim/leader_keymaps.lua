@@ -17,6 +17,11 @@ return {
 				k = { yank_to_window("k"), "Up" },
 				l = { yank_to_window("l"), "Right" },
 			},
+			a = {
+				name = " ChatGPT",
+				o = {"<cmd>NeoAIContext<cr>", "Open with current code as context"},
+				i = {"<cmd>NeoAIInject<cr>", "Inject selection"},
+			}
 		}
 	},
 	n = {
@@ -24,12 +29,10 @@ return {
 			["/"] = { function() require("telescope.builtin").current_buffer_fuzzy_find() end,
 				"Fuzzy find on current buffer" },
 			a = {
-				name = "擄ChatGPT",
-				o = {"<cmd>ChatGPT<cr>", "Open"},
-				a = {"<cmd>ChatGPTActAs<cr>", "Act as"},
-				c = {"<cmd>ChatGPTCompleteCode<cr>", "Complete code"},
-				e = {"<cmd>ChatGPTEditWithInstructions<cr>", "Edit with instructions"},
-				r = {"<cmd>ChatGPTRun<cr>", "Run"},
+				name = " ChatGPT",
+				o = {"<cmd>NeoAIToggle<cr>", "Open"},
+				g = {'"gp', "Paste output"},
+				p = {'"cp', "Paste code"},
 			},
 			o = { "<cmd>Neotree float toggle dir=%:h<cr>", "Open file" },
 			n = { "<cmd>IconPickerNormal<cr>", "Icon picker" },
