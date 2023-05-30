@@ -32,7 +32,7 @@ return {
 				g = {'"gp', "Paste output"},
 				p = {'"cp', "Paste code"},
 			},
-			o = { "<cmd>Neotree float toggle dir=%:h<cr>", "Open file" },
+			o = { "<cmd>Neotree float toggle<cr>", "Open file" },
 			n = { "<cmd>IconPickerNormal<cr>", "Icon picker" },
 			z = { "<cmd>ZenMode<cr>", "Zoom window" },
 			p = {
