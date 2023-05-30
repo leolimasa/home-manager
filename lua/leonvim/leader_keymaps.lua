@@ -1,8 +1,6 @@
 -- Specifies leader key shortcuts
 -- See https://github.com/folke/which-key.nvim for format
 
-local win = require("leonvim.window")
-
 local function yank_to_window(pos)
 	return "y<c-w><c-" .. pos .. "><cmd>stopinsert<cr>gpi<cr>"
 end
@@ -42,7 +40,7 @@ return {
 				l = { "<cmd>Mason<cr>", "Manage LSP clients" },
 				u = { "<cmd>MasonUpdate<cr>", "Update LSP repository" },
 				z = { "<cmd>Lazy<cr>", "Lazy plugin manager" }
-			},
+		},
 			["?"] = {
 				name = " Help",
 				f = { function() require("telescope.builtin").help_tags() end, "Find in help" },
@@ -121,7 +119,12 @@ return {
 				s = { function() require 'dap'.repl.open() end,
 					"Debugger state" },
 				u = { function() require("dapui").toggle() end,
-					"Toggle UI" }
+					"Toggle UI" },
+				j = { function()
+					require("dap.ext.vscode").load_launchjs(
+						vim.api.nvim_buf_get_name(0))
+					end, 
+					"Load current file as launch.json config"}
 			},
 			r = {
 				name = " Terminal",
