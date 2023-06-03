@@ -180,7 +180,6 @@ return {
 			vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 			require("neo-tree").setup({
 				enable_diagnostics = true,
-				follow_current_file = true,
 				popup_border_style = "rounded",
 			})
 		end
