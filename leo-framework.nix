@@ -11,6 +11,7 @@
     ./tmux.nix
     ./kitty.nix
     ./zsh.nix
+    ./zettel.nix
   ];
 
 }

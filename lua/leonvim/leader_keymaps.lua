@@ -17,8 +17,9 @@ return {
 			},
 			a = {
 				name = " ChatGPT",
-				o = {"<cmd>NeoAIContext<cr>", "Open with current code as context"},
-				i = {"<cmd>NeoAIInject<cr>", "Inject selection"},
+				o = { function ()
+					require("chatgpt").edit_with_instructions()
+				end, "Open with selection"},
 			}
 		}
 	},
@@ -28,9 +29,7 @@ return {
 				"Fuzzy find on current buffer" },
 			a = {
 				name = " ChatGPT",
-				o = {"<cmd>NeoAIToggle<cr>", "Open"},
-				g = {'"gp', "Paste output"},
-				p = {'"cp', "Paste code"},
+				o = {"<cmd>ChatGPT<cr>", "Open"},
 			},
 			o = { "<cmd>Neotree float toggle<cr>", "Open file" },
 			n = { "<cmd>IconPickerNormal<cr>", "Icon picker" },
