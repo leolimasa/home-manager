@@ -93,10 +93,9 @@ return {
 	},
 	-- Better statusline
 	['nvim-lualine/lualine.nvim'] = {
-		config = function()
-			require('lualine').setup()
-		end
+		config = require('leonvim.config.lualine')
 	},
+	-- Pretty notification popups
 	['rcarriga/nvim-notify'] = {
 		config = function()
 			-- Override vim's notify function with the plugin
