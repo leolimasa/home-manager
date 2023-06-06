@@ -1,3 +1,9 @@
+local function absolute_to_relative_path(absolute_path)
+  local cwd = vim.fn.getcwd()
+  local relative_path = vim.fn.substitute(absolute_path, cwd..'/', '', '')
+  return relative_path
+end
+
 return function()
   -- Eviline config for lualine
   -- Author: shadmansaleh
@@ -35,8 +41,8 @@ return function()
     end,
   }
 
-  local function fullfilename ()
-    return vim.api.nvim_buf_get_name(0)
+  local function fullfilename()
+    return absolute_to_relative_path(vim.api.nvim_buf_get_name(0))
   end
 
   -- Config
@@ -84,46 +90,39 @@ return function()
     table.insert(config.sections.lualine_x, component)
   end
 
+  local mode_color = {
+    n = colors.blue,
+    i = colors.green,
+    v = colors.magenta,
+    [''] = colors.blue,
+    V = colors.magenta,
+    c = colors.magenta,
+    no = colors.red,
+    s = colors.orange,
+    S = colors.orange,
+    [''] = colors.orange,
+    ic = colors.yellow,
+    R = colors.violet,
+    Rv = colors.violet,
+    cv = colors.red,
+    ce = colors.red,
+    r = colors.cyan,
+    rm = colors.cyan,
+    ['r?'] = colors.cyan,
+    ['!'] = colors.red,
+    t = colors.red,
+  }
+
+  local function mode_color_fn()
+    return { fg = mode_color[vim.fn.mode()] }
+  end
+
   ins_left {
     function()
       return '▊'
     end,
-    color = { fg = colors.blue },    -- Sets highlighting of component
+    color = mode_color_fn,      -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
-  }
-
-  ins_left {
-    -- mode component
-    function()
-      return ''
-    end,
-    color = function()
-      -- auto change color according to neovims mode
-      local mode_color = {
-        n = colors.red,
-        i = colors.green,
-        v = colors.blue,
-        [''] = colors.blue,
-        V = colors.blue,
-        c = colors.magenta,
-        no = colors.red,
-        s = colors.orange,
-        S = colors.orange,
-        [''] = colors.orange,
-        ic = colors.yellow,
-        R = colors.violet,
-        Rv = colors.violet,
-        cv = colors.red,
-        ce = colors.red,
-        r = colors.cyan,
-        rm = colors.cyan,
-        ['r?'] = colors.cyan,
-        ['!'] = colors.red,
-        t = colors.red,
-      }
-      return { fg = mode_color[vim.fn.mode()] }
-    end,
-    padding = { right = 1 },
   }
 
   ins_left {
@@ -220,7 +219,7 @@ return function()
     function()
       return '▊'
     end,
-    color = { fg = colors.blue },
+    color = mode_color_fn,      -- Sets highlighting of component
     padding = { left = 1 },
   }
 

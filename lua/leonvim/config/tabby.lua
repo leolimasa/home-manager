@@ -1,4 +1,5 @@
 return function()
+	vim.o.showtabline = 2
 	local theme = {
 		fill = 'TabLineFill',
 		-- Also you can do this: fill = { fg='#f2e9de', bg='#907aa9', style='italic' }
@@ -28,16 +29,7 @@ return function()
 				}
 			end),
 			line.spacer(),
-			line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-				return {
-					line.sep('', theme.win, theme.fill),
-					win.is_current() and '' or '',
-					win.buf_name(),
-					line.sep('', theme.win, theme.fill),
-					hl = theme.win,
-					margin = ' ',
-				}
-			end),
+			vim.fn.getcwd(),
 			{
 				line.sep('', theme.tail, theme.fill),
 				{ '  ', hl = theme.tail },
