@@ -1,8 +1,19 @@
 local function absolute_to_relative_path(absolute_path)
   local cwd = vim.fn.getcwd()
-  local relative_path = vim.fn.substitute(absolute_path, cwd..'/', '', '')
+  local relative_path = vim.fn.substitute(absolute_path, cwd .. '/', '', '')
   return relative_path
 end
+
+local function show_macro_recording()
+  local recording_register = vim.fn.reg_recording()
+  if recording_register == "" then
+    return ""
+  else
+    return "壘" .. recording_register
+  end
+end
+
+
 
 return function()
   -- Eviline config for lualine
@@ -121,7 +132,7 @@ return function()
     function()
       return '▊'
     end,
-    color = mode_color_fn,      -- Sets highlighting of component
+    color = mode_color_fn,             -- Sets highlighting of component
     padding = { left = 0, right = 1 }, -- We don't need space before this
   }
 
@@ -141,6 +152,8 @@ return function()
   ins_left { 'location' }
 
   ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
+
+  ins_left { show_macro_recording, color = { fg = colors.red } }
 
   ins_left {
     'diagnostics',
@@ -164,7 +177,7 @@ return function()
   ins_left {
     -- Lsp server name .
     function()
-      local msg = 'No Active Lsp'
+      local msg = 'none'
       local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
       local clients = vim.lsp.get_active_clients()
       if next(clients) == nil then
@@ -219,9 +232,42 @@ return function()
     function()
       return '▊'
     end,
-    color = mode_color_fn,      -- Sets highlighting of component
+    color = mode_color_fn, -- Sets highlighting of component
     padding = { left = 1 },
   }
 
   lualine.setup(config)
+
+  -------------------------------------------
+  -- Update lualine every time macro recording
+  -- starts / ends
+  -------------------------------------------
+  vim.api.nvim_create_autocmd("RecordingEnter", {
+    callback = function()
+      lualine.refresh({
+        place = { "statusline" },
+      })
+    end,
+  })
+
+  vim.api.nvim_create_autocmd("RecordingLeave", {
+    callback = function()
+      -- This is going to seem really weird!
+      -- Instead of just calling refresh we need to wait a moment because of the nature of
+      -- `vim.fn.reg_recording`. If we tell lualine to refresh right now it actually will
+      -- still show a recording occuring because `vim.fn.reg_recording` hasn't emptied yet.
+      -- So what we need to do is wait a tiny amount of time (in this instance 50 ms) to
+      -- ensure `vim.fn.reg_recording` is purged before asking lualine to refresh.
+      local timer = vim.loop.new_timer()
+      timer:start(
+        50,
+        0,
+        vim.schedule_wrap(function()
+          lualine.refresh({
+            place = { "statusline" },
+          })
+        end)
+      )
+    end,
+  })
 end
