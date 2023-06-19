@@ -2,13 +2,11 @@
 {
   imports = [
     ./main.nix
-    #./neovim2.nix
     ./leonvim.nix
     ./tmux.nix
     ./kitty.nix
     ./zsh.nix
     ./xdg.nix
-    ./zettel.nix
   ];
 
   home.file.".config/kitty/custom-settings.conf".text = ''

@@ -36,7 +36,6 @@
       silver-searcher
       imagemagick
       lazygit
-      sshfs
       racket
     ];
 

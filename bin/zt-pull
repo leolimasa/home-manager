@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+mkdir -p ~/zt
+rsync -avz -e 'ssh -J root@leosa.rocks' root@vm-rocks1.rocksvpn:/volumes/zettel ~/zt
