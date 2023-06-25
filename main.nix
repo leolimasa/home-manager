@@ -29,8 +29,9 @@
     '';
 
     home.packages = with pkgs; [
-      #jetbrains-mono
-      nerdfonts
+      jetbrains-mono
+      #nerdfonts
+      (nerdfonts.override { fonts = ["NerdFontsSymbolsOnly" "JetBrainsMono"]; })
       ranger
       ripgrep
       silver-searcher
