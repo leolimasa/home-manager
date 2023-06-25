@@ -36,6 +36,12 @@ in
       plugins = with pkgs.vimPlugins; [
         vim-tmux-navigator
       ];
+
+      extraPython3Packages = (ps: with ps; [
+        jupyter-client
+        pynvim
+        autopep8
+      ]);
     };
 
     #home.file.".config/nvim/coc-settings.json".text = builtins.readFile ./files/coc-settings.json;

@@ -232,5 +232,7 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim"
 		}
-	}
+	},
+	-- Connect to Jupyter kernels
+	['jupyter-vim/jupyter-vim'] = {}
 }
