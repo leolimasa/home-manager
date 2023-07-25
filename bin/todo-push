@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-rsync -avz -e 'ssh -J root@leosa.rocks' ~/zt/todo/ root@vm-rocks1.rocksvpn:/volumes/zettel/todo
+rsync -avzu -e 'ssh -J root@leosa.rocks' ~/zt/todo/ root@vm-rocks1.rocksvpn:/volumes/zettel/todo

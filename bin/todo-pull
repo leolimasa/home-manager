@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 mkdir -p ~/zt/todo
-rsync -avz -e 'ssh -J root@leosa.rocks' root@vm-rocks1.rocksvpn:/volumes/zettel/todo ~/zt
+rsync -avzu -e 'ssh -J root@leosa.rocks' root@vm-rocks1.rocksvpn:/volumes/zettel/todo ~/zt
