@@ -3,28 +3,50 @@ return {
 	["nvim-lua/plenary.nvim"] = {},
 	-- Pretty icons
 	["nvim-tree/nvim-web-devicons"] = {},
+
 	-- Code snippet engine
-	["hrsh7th/vim-vsnip"] = {},
+	-- ["hrsh7th/vim-vsnip"] = {},
+
 	-- Code snippet presets
 	-- Framework specific snippets may need extra config. See plugin website.
-	["rafamadriz/friendly-snippets"] = {},
+	-- ["rafamadriz/friendly-snippets"] = {},
+
 	-- Autocomplete
-	["hrsh7th/nvim-cmp"] = {
+	-- ["hrsh7th/nvim-cmp"] = {
+	-- 	dependencies = {
+	-- 		'hrsh7th/cmp-buffer',
+	-- 		'hrsh7th/cmp-path',
+	-- 		'hrsh7th/cmp-cmdline',
+	-- 		'hrsh7th/cmp-vsnip',
+	-- 		'windwp/nvim-autopairs'
+	-- 	},
+	-- 	config = require("leonvim.config.cmp")
+	-- },
+
+	-- FAST autocomplete
+	-- Used to use nvim-cmp. Changed to coq_nvim since nvim-cmp would be slow
+	-- on big projects or outright stop working randomly.
+	["ms-jpq/coq_nvim"] = {
+		init = function()
+			vim.g.coq_settings = {
+				auto_start = "shut-up",
+				limits = {
+					completion_auto_timeout = 2000
+				}
+			}
+		end,
 		dependencies = {
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'hrsh7th/cmp-vsnip',
-			'windwp/nvim-autopairs'
-		},
-		config = require("leonvim.config.cmp")
+			"ms-jpq/coq.artifacts", -- snippets
+			"ms-jpq/coq.thirdparty" -- neovim api completion, shell completion, etc
+		}
 	},
+
 	-- Lua autocompletion for neovim api
-	["folke/neodev.nvim"] = {
-		config = function()
-			require("neodev").setup()
-		end
-	},
+	-- ["folke/neodev.nvim"] = {
+	-- 	config = function()
+	-- 		require("neodev").setup()
+	-- 	end
+	-- },
 	-- Provides pre-made configuration for LSP servers and ensures it attaches to the buffer.
 	-- This will NOT auto setup an LSP client. For that, see mason-lspconfig.
 	-- Note that if you want extra features for a particular LSP, you may need to install

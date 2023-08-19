@@ -6,7 +6,7 @@
     ./tmux.nix
     ./kitty.nix
     ./zsh.nix
-    ./xdg.nix
+    #./xdg.nix
   ];
 
   home.file.".config/kitty/custom-settings.conf".text = ''
