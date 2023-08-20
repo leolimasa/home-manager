@@ -30,8 +30,13 @@ return {
 		init = function()
 			vim.g.coq_settings = {
 				auto_start = "shut-up",
+				keymap = {
+					jump_to_mark = ""
+				},
 				limits = {
-					completion_auto_timeout = 2000
+					completion_auto_timeout = 2.0,
+					completion_manual_timeout = 2.0
+
 				}
 			}
 		end,
