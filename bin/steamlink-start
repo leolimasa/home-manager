@@ -1,0 +1,2 @@
+sessid=$(loginctl list-sessions | head -n2 | tail -n1 | awk '{print $1}')
+loginctl unlock-session $sessid
