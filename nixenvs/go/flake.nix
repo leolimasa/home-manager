@@ -1,5 +1,5 @@
 {
-  description = "Rust env";
+  description = "Go env";
 
   inputs = {
     nixpkgs = {
@@ -21,12 +21,12 @@
       devShell = forAllSystems (pkgs: 
           with pkgs; mkShell {
             buildInputs = [
-              rustc
-              rustup
+              go
+              gopls
             ]; 
 
             shellHook = ''
-              export ENV_NAME="$ENV_NAME rust"
+              export ENV_NAME="$ENV_NAME go"
               exec $SHELL
             '';
           });

@@ -21,12 +21,14 @@
       devShell = forAllSystems (pkgs: 
           with pkgs; mkShell {
             buildInputs = [
-              rustc
-              rustup
+              python311
+              python311Packages.jedi
+              python311Packages.mypy
+              pipenv
             ]; 
 
             shellHook = ''
-              export ENV_NAME="$ENV_NAME rust"
+              export ENV_NAME="$ENV_NAME python311"
               exec $SHELL
             '';
           });
