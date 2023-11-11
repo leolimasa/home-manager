@@ -10,6 +10,7 @@
     ./leonvim.nix
     ./tmux.nix
     ./kitty.nix
+    ./foot.nix
     ./zsh.nix
   ];
 

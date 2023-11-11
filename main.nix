@@ -38,6 +38,7 @@
       imagemagick
       lazygit
       racket
+      visidata
     ];
 
     fonts.fontconfig.enable = true;
