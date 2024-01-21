@@ -247,10 +247,18 @@ return {
 	-- 		require("neoai").setup()
 	-- 	end
 	-- }
+	--
 	["jackMort/ChatGPT.nvim"] = {
 		event = "VeryLazy",
 		config = function()
-			require("chatgpt").setup()
+			require("chatgpt").setup({
+				openai_params = {
+					model = "gpt-4"
+				},
+				openai_edit_params = {
+					model = "gpt-4"
+				},
+			})
 		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
@@ -258,6 +266,7 @@ return {
 			"nvim-telescope/telescope.nvim"
 		}
 	},
+
 	-- Connect to Jupyter kernels
 	['jupyter-vim/jupyter-vim'] = {},
 

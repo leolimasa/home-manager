@@ -28,8 +28,10 @@ return {
 			["/"] = { function() require("telescope.builtin").current_buffer_fuzzy_find() end,
 				"Fuzzy find on current buffer" },
 			a = {
-				name = "  ChatGPT",
-				o = {"<cmd>ChatGPT<cr>", "Open"},
+				name = "  AI",
+				g = {"<cmd>ChatGPT<cr>", "ChatGPT"},
+				p = {"<cmd>Copilot panel<cr>", "Copilot panel"},
+				s = {"<cmd>Copilot setup<cr>", "Copilot setup"},
 			},
 			o = { "<cmd>Neotree float toggle<cr>", "Open file" },
 			n = { "<cmd>IconPickerNormal<cr>", "Icon picker" },
