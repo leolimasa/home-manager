@@ -12,6 +12,7 @@
     ./kitty.nix
     ./foot.nix
     ./zsh.nix
+    ./zellij.nix
   ];
 
 }

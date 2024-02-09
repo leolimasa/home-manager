@@ -1,0 +1,41 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="file:~/pr/personal/home-manager/files/zellij/plugins/zjstatus-0.12.0.wasm" {
+            format_left  "{mode} #[fg=#89B4FA,bold]{session} {tabs}"
+            format_right "{command_git_branch} {datetime} {command_utc} {command_dt} "
+            format_space ""
+
+            border_enabled  "false"
+            border_char     "─"
+            border_format   "#[fg=#6C7086]{char}"
+            border_position "top"
+
+            hide_frame_for_single_pane "true"
+
+            mode_normal  "#[bg=blue] "
+            mode_tmux    "#[bg=#ffc387] "
+
+            tab_normal   "#[fg=#6C7086] {name} "
+            tab_active " #[fg=#6C7086]#[fg=#282c34,bg=#6C7086,bold]{name}#[fg=#6C7086] "
+
+            command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
+            command_git_branch_format      "#[fg=blue] {stdout} "
+            command_git_branch_interval    "1"
+            command_git_branch_rendermode  "static"
+
+            command_utc_command "date -u +\"%Y-%m-%d %H:%M\""
+            command_utc_format  "{stdout} UTC"
+            command_utc_interval "10"
+            command_utc_rendermode "static"
+
+            command_dt_command "date +\"%Y-%m-%d %I:%M %p\""
+            command_dt_format "#[bg=#6C7086,fg=#282c34,bold] {stdout} "
+            command_dt_interval "1"
+            command_dt_rendermode "static"
+        }
+    }
+    pane
+    pane size=1 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+}
