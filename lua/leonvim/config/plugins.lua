@@ -270,6 +270,23 @@ return {
 	-- Connect to Jupyter kernels
 	['jupyter-vim/jupyter-vim'] = {},
 
-	-- Github copilot
+	-- Github copilot (official)
 	['github/copilot.vim'] = {}
+
+	-- ['zbirenbaum/copilot.lua'] = {
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = { enabled = false },
+	-- 			panel = { enabled = false},
+	-- 		})
+	-- 	end
+	-- },
+
+	-- Integrate copilot into cmp
+	-- ['zbirenbaum/copilot-cmp'] = {
+	-- 	dependencies = {'zbirenbaum/copilot.lua'},
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end
+	-- },
 }
