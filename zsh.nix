@@ -12,7 +12,9 @@
       enable = true;
       enableCompletion = true;
       enableAutosuggestions = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting = {
+        enable = true;
+      };
       initExtraFirst = 
       ''
       source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh

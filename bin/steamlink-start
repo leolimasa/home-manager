@@ -1,0 +1,3 @@
+loginctl list-sessions | tail -n +2 | head -n -1 | awk '{print $1}' | xargs loginctl unlock-session
+gnome-randr modify "DP-0" --mode "1920x1080@143.981"
+#gnome-randr modify "DP-0" --mode "3840x2160@143.98"

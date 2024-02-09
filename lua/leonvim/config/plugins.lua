@@ -156,9 +156,7 @@ return {
 	-- Shows line indents
 	["lukas-reineke/indent-blankline.nvim"] = {
 		config = function()
-			require("indent_blankline").setup {
-				show_current_context = true,
-				show_current_context_start = true,
+			require("ibl").setup {
 			}
 		end
 	},
@@ -249,10 +247,18 @@ return {
 	-- 		require("neoai").setup()
 	-- 	end
 	-- }
+	--
 	["jackMort/ChatGPT.nvim"] = {
 		event = "VeryLazy",
 		config = function()
-			require("chatgpt").setup()
+			require("chatgpt").setup({
+				openai_params = {
+					model = "gpt-4"
+				},
+				openai_edit_params = {
+					model = "gpt-4"
+				},
+			})
 		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
@@ -260,6 +266,27 @@ return {
 			"nvim-telescope/telescope.nvim"
 		}
 	},
+
 	-- Connect to Jupyter kernels
-	['jupyter-vim/jupyter-vim'] = {}
+	['jupyter-vim/jupyter-vim'] = {},
+
+	-- Github copilot (official)
+	['github/copilot.vim'] = {}
+
+	-- ['zbirenbaum/copilot.lua'] = {
+	-- 	config = function()
+	-- 		require("copilot").setup({
+	-- 			suggestion = { enabled = false },
+	-- 			panel = { enabled = false},
+	-- 		})
+	-- 	end
+	-- },
+
+	-- Integrate copilot into cmp
+	-- ['zbirenbaum/copilot-cmp'] = {
+	-- 	dependencies = {'zbirenbaum/copilot.lua'},
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup()
+	-- 	end
+	-- },
 }

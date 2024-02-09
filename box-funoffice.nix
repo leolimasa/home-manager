@@ -12,4 +12,8 @@
   home.file.".config/kitty/custom-settings.conf".text = ''
     font_size 12.0
   '';
+
+  home.packages = with pkgs; [
+    gnome-randr
+  ];
 }
