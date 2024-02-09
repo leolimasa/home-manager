@@ -6,6 +6,8 @@
     ./leonvim.nix
     ./tmux.nix
     ./zsh.nix
+    ./kitty.nix
+    ./zellij.nix
   ];
 
   config = {
