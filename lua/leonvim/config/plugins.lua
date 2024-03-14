@@ -59,6 +59,10 @@ return {
 	["neovim/nvim-lspconfig"] = {
 		dependencies = { "folke/neodev.nvim" },
 		lazy = false,
+		config = function()
+			-- Add any manual LSP here
+			require("lspconfig").gleam.setup{}
+		end
 	},
 	-- Manage and install LSP server binaries
 	["williamboman/mason.nvim"] = {
